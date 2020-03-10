@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**withholdingTaxesEmailDocumentPost**](WithholdingTaxApi.md#withholdingTaxesEmailDocumentPost) | **POST** /withholding-taxes/email-document | Send email withholding tax document.
 [**withholdingTaxesGet**](WithholdingTaxApi.md#withholdingTaxesGet) | **GET** /withholding-taxes | Get list all withholding tax documents.
 [**withholdingTaxesIdAttachmentPost**](WithholdingTaxApi.md#withholdingTaxesIdAttachmentPost) | **POST** /withholding-taxes/{id}/attachment | Add Attachment to expenses.
+[**withholdingTaxesIdDelete**](WithholdingTaxApi.md#withholdingTaxesIdDelete) | **DELETE** /withholding-taxes/{id} | Get withholding tax document.
 [**withholdingTaxesIdGet**](WithholdingTaxApi.md#withholdingTaxesIdGet) | **GET** /withholding-taxes/{id} | Get withholding tax document.
 [**withholdingTaxesIdStatusKeyStatusIdPost**](WithholdingTaxApi.md#withholdingTaxesIdStatusKeyStatusIdPost) | **POST** /withholding-taxes/{id}/status-key/{statusId} | Change status of withholding tax document.
 [**withholdingTaxesPost**](WithholdingTaxApi.md#withholdingTaxesPost) | **POST** /withholding-taxes | Create withholding tax document.
@@ -181,6 +182,64 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## withholdingTaxesIdDelete
+
+> \OpenAPI\Client\Model\DeleteResponse withholdingTaxesIdDelete($authorization, $id)
+
+Get withholding tax document.
+
+ลบ เอกสารใบหัก ณ ที่จ่าย ตามเลขที่เอกสารที่ต้องการ <br> ** การลบเอกสาร เอกสารต้องอยู่ในสถานะ รอดำเนินการ
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new OpenAPI\Client\Api\WithholdingTaxApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$authorization = 'Bearer accessToken'; // string | 
+$id = 'id_example'; // string | ID เอกสารใช้ recordId
+
+try {
+    $result = $apiInstance->withholdingTaxesIdDelete($authorization, $id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WithholdingTaxApi->withholdingTaxesIdDelete: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string**|  | [default to &#39;Bearer accessToken&#39;]
+ **id** | **string**| ID เอกสารใช้ recordId |
+
+### Return type
+
+[**\OpenAPI\Client\Model\DeleteResponse**](../Model/DeleteResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)

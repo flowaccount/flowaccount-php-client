@@ -13,7 +13,7 @@
 /**
  * FlowAccount Open API
  *
- * FlowAccount.com โปรแกรมบัญชีออนไลน์ใช้งานง่าย สำหรับธุรกิจที่พึ่งเริ่มต้น
+ * FlowAccount.com โปรแกรมบัญชีออนไลน์ใช้งานง่าย สำหรับธุรกิจที่พึ่งเริ่มต้น   # Introduction **Servers Production**    site: https://www.flowaccount.com    api url: https://openapi.flowaccount.com/v1    **Beta test**   site: http://sandbox-new.flowaccount.com/    api url: https://openapi.flowaccount.com/test
  *
  * The version of the OpenAPI document: 2-oas3
  * Contact: developer@flowaccount.com
@@ -57,10 +57,7 @@ class InlineObject5 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'grant_type' => 'string',
-        'scope' => 'string',
-        'client_id' => 'string',
-        'client_secret' => 'string'
+        'file' => '\SplFileObject'
     ];
 
     /**
@@ -69,10 +66,7 @@ class InlineObject5 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'grant_type' => null,
-        'scope' => null,
-        'client_id' => null,
-        'client_secret' => null
+        'file' => 'binary'
     ];
 
     /**
@@ -102,10 +96,7 @@ class InlineObject5 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'grant_type' => 'grant_type',
-        'scope' => 'scope',
-        'client_id' => 'client_id',
-        'client_secret' => 'client_secret'
+        'file' => 'file'
     ];
 
     /**
@@ -114,10 +105,7 @@ class InlineObject5 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'grant_type' => 'setGrantType',
-        'scope' => 'setScope',
-        'client_id' => 'setClientId',
-        'client_secret' => 'setClientSecret'
+        'file' => 'setFile'
     ];
 
     /**
@@ -126,10 +114,7 @@ class InlineObject5 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'grant_type' => 'getGrantType',
-        'scope' => 'getScope',
-        'client_id' => 'getClientId',
-        'client_secret' => 'getClientSecret'
+        'file' => 'getFile'
     ];
 
     /**
@@ -192,10 +177,7 @@ class InlineObject5 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['grant_type'] = isset($data['grant_type']) ? $data['grant_type'] : null;
-        $this->container['scope'] = isset($data['scope']) ? $data['scope'] : null;
-        $this->container['client_id'] = isset($data['client_id']) ? $data['client_id'] : null;
-        $this->container['client_secret'] = isset($data['client_secret']) ? $data['client_secret'] : null;
+        $this->container['file'] = isset($data['file']) ? $data['file'] : null;
     }
 
     /**
@@ -223,97 +205,25 @@ class InlineObject5 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets grant_type
+     * Gets file
      *
-     * @return string|null
+     * @return \SplFileObject|null
      */
-    public function getGrantType()
+    public function getFile()
     {
-        return $this->container['grant_type'];
+        return $this->container['file'];
     }
 
     /**
-     * Sets grant_type
+     * Sets file
      *
-     * @param string|null $grant_type grant_type
+     * @param \SplFileObject|null $file รูปแบบ file ที่ใช้แนบในเอกสารเป็นแบบ Binary
      *
      * @return $this
      */
-    public function setGrantType($grant_type)
+    public function setFile($file)
     {
-        $this->container['grant_type'] = $grant_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets scope
-     *
-     * @return string|null
-     */
-    public function getScope()
-    {
-        return $this->container['scope'];
-    }
-
-    /**
-     * Sets scope
-     *
-     * @param string|null $scope scope
-     *
-     * @return $this
-     */
-    public function setScope($scope)
-    {
-        $this->container['scope'] = $scope;
-
-        return $this;
-    }
-
-    /**
-     * Gets client_id
-     *
-     * @return string|null
-     */
-    public function getClientId()
-    {
-        return $this->container['client_id'];
-    }
-
-    /**
-     * Sets client_id
-     *
-     * @param string|null $client_id client_id
-     *
-     * @return $this
-     */
-    public function setClientId($client_id)
-    {
-        $this->container['client_id'] = $client_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets client_secret
-     *
-     * @return string|null
-     */
-    public function getClientSecret()
-    {
-        return $this->container['client_secret'];
-    }
-
-    /**
-     * Sets client_secret
-     *
-     * @param string|null $client_secret client_secret
-     *
-     * @return $this
-     */
-    public function setClientSecret($client_secret)
-    {
-        $this->container['client_secret'] = $client_secret;
+        $this->container['file'] = $file;
 
         return $this;
     }

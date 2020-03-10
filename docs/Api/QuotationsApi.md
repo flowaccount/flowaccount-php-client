@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**quotationsEmailDocumentPost**](QuotationsApi.md#quotationsEmailDocumentPost) | **POST** /quotations/email-document | Send email quotations document.
 [**quotationsGet**](QuotationsApi.md#quotationsGet) | **GET** /quotations | Get list all quotations documents.
 [**quotationsIdAttachmentPost**](QuotationsApi.md#quotationsIdAttachmentPost) | **POST** /quotations/{id}/attachment | Add Attachment to quotations document.
+[**quotationsIdDelete**](QuotationsApi.md#quotationsIdDelete) | **DELETE** /quotations/{id} | Get quotations document.
 [**quotationsIdGet**](QuotationsApi.md#quotationsIdGet) | **GET** /quotations/{id} | Get quotations document.
 [**quotationsIdStatusKeyStatusIdPost**](QuotationsApi.md#quotationsIdStatusKeyStatusIdPost) | **POST** /quotations/{id}/status-key/{statusId} | Change status of quotations document.
 [**quotationsInlinePost**](QuotationsApi.md#quotationsInlinePost) | **POST** /quotations/inline | Create quotations document with discount and tax inline.
@@ -182,6 +183,64 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## quotationsIdDelete
+
+> \OpenAPI\Client\Model\DeleteResponse quotationsIdDelete($authorization, $id)
+
+Get quotations document.
+
+ลบ เอกสารใบเสนอราคาตามเลขที่เอกสารที่ต้องการ <br> ** การลบเอกสาร เอกสารต้องอยู่ในสถานะ รออนุมัติ
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new OpenAPI\Client\Api\QuotationsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$authorization = 'Bearer accessToken'; // string | 
+$id = 'id_example'; // string | ID เอกสารใช้ recordId
+
+try {
+    $result = $apiInstance->quotationsIdDelete($authorization, $id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling QuotationsApi->quotationsIdDelete: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string**|  | [default to &#39;Bearer accessToken&#39;]
+ **id** | **string**| ID เอกสารใช้ recordId |
+
+### Return type
+
+[**\OpenAPI\Client\Model\DeleteResponse**](../Model/DeleteResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)

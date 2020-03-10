@@ -5,6 +5,7 @@ All URIs are relative to *https://openapi.flowaccount.com/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**productsGet**](ProductsApi.md#productsGet) | **GET** /products | Get list all products.
+[**productsIdDelete**](ProductsApi.md#productsIdDelete) | **DELETE** /products/{id} | Delete products.
 [**productsIdGet**](ProductsApi.md#productsIdGet) | **GET** /products/{id} | Get products.
 [**productsIdPut**](ProductsApi.md#productsIdPut) | **PUT** /products/{id} | Update products.
 [**productsPost**](ProductsApi.md#productsPost) | **POST** /products | Create products.
@@ -50,6 +51,62 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\OpenAPI\Client\Model\ProductResponse**](../Model/ProductResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## productsIdDelete
+
+> \OpenAPI\Client\Model\DeleteResponse productsIdDelete($authorization, $id)
+
+Delete products.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new OpenAPI\Client\Api\ProductsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$authorization = 'Bearer accessToken'; // string | 
+$id = 'id_example'; // string | เลข Id Contact
+
+try {
+    $result = $apiInstance->productsIdDelete($authorization, $id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ProductsApi->productsIdDelete: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string**|  | [default to &#39;Bearer accessToken&#39;]
+ **id** | **string**| เลข Id Contact |
+
+### Return type
+
+[**\OpenAPI\Client\Model\DeleteResponse**](../Model/DeleteResponse.md)
 
 ### Authorization
 

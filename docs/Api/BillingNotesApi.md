@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**billingNotesEmailDocumentPost**](BillingNotesApi.md#billingNotesEmailDocumentPost) | **POST** /billing-notes/email-document | Send email billing notes document.
 [**billingNotesGet**](BillingNotesApi.md#billingNotesGet) | **GET** /billing-notes | Get list all billing notes documents.
 [**billingNotesIdAttachmentPost**](BillingNotesApi.md#billingNotesIdAttachmentPost) | **POST** /billing-notes/{id}/attachment | Add Attachment to billing notes document.
+[**billingNotesIdDelete**](BillingNotesApi.md#billingNotesIdDelete) | **DELETE** /billing-notes/{id} | Get billing notes document.
 [**billingNotesIdGet**](BillingNotesApi.md#billingNotesIdGet) | **GET** /billing-notes/{id} | Get billing notes document.
 [**billingNotesIdStatusKeyStatusIdPost**](BillingNotesApi.md#billingNotesIdStatusKeyStatusIdPost) | **POST** /billing-notes/{id}/status-key/{statusId} | Change status of billing notes document.
 [**billingNotesInlinePost**](BillingNotesApi.md#billingNotesInlinePost) | **POST** /billing-notes/inline | Create billing notes document with discount and tax inline.
@@ -189,6 +190,64 @@ No authorization required
 [[Back to README]](../../README.md)
 
 
+## billingNotesIdDelete
+
+> \OpenAPI\Client\Model\DeleteResponse billingNotesIdDelete($authorization, $id)
+
+Get billing notes document.
+
+ลบ เอกสารใบวางบิล ตามเลขที่เอกสารที่ต้องการ <br> ** การลบเอกสาร เอกสารต้องอยู่ในสถานะ รอวางบิล
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new OpenAPI\Client\Api\BillingNotesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$authorization = 'Bearer accessToken'; // string | 
+$id = 'id_example'; // string | ID เอกสารใช้ recordId
+
+try {
+    $result = $apiInstance->billingNotesIdDelete($authorization, $id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BillingNotesApi->billingNotesIdDelete: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string**|  | [default to &#39;Bearer accessToken&#39;]
+ **id** | **string**| ID เอกสารใช้ recordId |
+
+### Return type
+
+[**\OpenAPI\Client\Model\DeleteResponse**](../Model/DeleteResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
 ## billingNotesIdGet
 
 > \OpenAPI\Client\Model\InlineDocumentResponse billingNotesIdGet($authorization, $id)
@@ -313,7 +372,7 @@ No authorization required
 
 Create billing notes document with discount and tax inline.
 
-สร้างเอกสารใบวางบิล แบบส่วนลด หรือ ภาษี แยกตามรายการสินค้า เมื่อสร้างสำเร็จสถานะเอกสารจะอยู่ในสถานะ รออนุมัติ (awaiting) <br> <br> ข้อมูลการออกเอกสารใบเสนอราคา : https://flowaccount.com/blog/ใบวางบิล-ใบแจ้งหนี้
+สร้างเอกสารใบวางบิล แบบส่วนลด หรือ ภาษี แยกตามรายการสินค้า เมื่อสร้างสำเร็จสถานะเอกสารจะอยู่ในสถานะ รอวางบิล (awaiting) <br> <br> ข้อมูลการออกเอกสารใบวางบิล : https://flowaccount.com/blog/ใบวางบิล-ใบแจ้งหนี้
 
 ### Example
 
@@ -371,7 +430,7 @@ No authorization required
 
 Create billing notes document.
 
-สร้างเอกสารใบวางบิล เมื่อสร้างสำเร็จสถานะเอกสารจะอยู่ในสถานะ รอวาบิล (awaiting) <br> <br> ข้อมูลการออกเอกสารใบเสนอราคา : https://flowaccount.com/blog/ใบวางบิล-ใบแจ้งหนี้
+สร้างเอกสารใบวางบิล เมื่อสร้างสำเร็จสถานะเอกสารจะอยู่ในสถานะ รอวาบิล (awaiting) <br> <br> ข้อมูลการออกเอกสารใบวางบิล : https://flowaccount.com/blog/ใบวางบิล-ใบแจ้งหนี้
 
 ### Example
 

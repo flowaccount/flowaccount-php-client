@@ -4,10 +4,10 @@ All URIs are relative to *https://openapi.flowaccount.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cashInvoicesIdStatusKeyStatusIdPost**](TaxInvoiceApi.md#cashInvoicesIdStatusKeyStatusIdPost) | **POST** /cash-invoices/{id}/status-key/{statusId} | Change status of tax invoices document.
 [**taxInvoicesEmailDocumentPost**](TaxInvoiceApi.md#taxInvoicesEmailDocumentPost) | **POST** /tax-invoices/email-document | Send Email tax invoice document
 [**taxInvoicesGet**](TaxInvoiceApi.md#taxInvoicesGet) | **GET** /tax-invoices | Get list all tax invocie documents.
 [**taxInvoicesIdAttachmentPost**](TaxInvoiceApi.md#taxInvoicesIdAttachmentPost) | **POST** /tax-invoices/{id}/attachment | Add Attachment to tax Invoices document.
+[**taxInvoicesIdDelete**](TaxInvoiceApi.md#taxInvoicesIdDelete) | **DELETE** /tax-invoices/{id} | Get tax invoices document.
 [**taxInvoicesIdGet**](TaxInvoiceApi.md#taxInvoicesIdGet) | **GET** /tax-invoices/{id} | Get tax invoices document.
 [**taxInvoicesIdPaymentPost**](TaxInvoiceApi.md#taxInvoicesIdPaymentPost) | **POST** /tax-invoices/{id}/payment | Change paid status of tax-invoice document.
 [**taxInvoicesIdStatusKeyStatusIdPost**](TaxInvoiceApi.md#taxInvoicesIdStatusKeyStatusIdPost) | **POST** /tax-invoices/{id}/status-key/{statusId} | Change status of tax invoices document.
@@ -15,66 +15,6 @@ Method | HTTP request | Description
 [**taxInvoicesPost**](TaxInvoiceApi.md#taxInvoicesPost) | **POST** /tax-invoices | Create tax invocie document.
 [**taxInvoicesSharedocumentPost**](TaxInvoiceApi.md#taxInvoicesSharedocumentPost) | **POST** /tax-invoices/sharedocument | Share link tax invoice document.
 
-
-
-## cashInvoicesIdStatusKeyStatusIdPost
-
-> \OpenAPI\Client\Model\InlineDocumentResponse cashInvoicesIdStatusKeyStatusIdPost($authorization, $id, $status_id)
-
-Change status of tax invoices document.
-
-เปลี่ยนสถานะของเอกสารใบกำกับภาษี/ใบเสร็จรับเงิน(เงินสด) สร้างเอกสารใหม่ครั้งแรกจะได้รับสถานะ รอดำเนินการ (awaiting)
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-$apiInstance = new OpenAPI\Client\Api\TaxInvoiceApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$authorization = 'Bearer accessToken'; // string | 
-$id = 'id_example'; // string | ID เอกสารใช้ recordId
-$status_id = 'status_id_example'; // string | เปลี่ยนสถานะเอกสารได้ 3 สถานะ <br> awaiting = รอดำเนินการ <br> invoicedelivered = รอเก็บเงิน <br> void = ยกเลิก
-
-try {
-    $result = $apiInstance->cashInvoicesIdStatusKeyStatusIdPost($authorization, $id, $status_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling TaxInvoiceApi->cashInvoicesIdStatusKeyStatusIdPost: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization** | **string**|  | [default to &#39;Bearer accessToken&#39;]
- **id** | **string**| ID เอกสารใช้ recordId |
- **status_id** | **string**| เปลี่ยนสถานะเอกสารได้ 3 สถานะ &lt;br&gt; awaiting &#x3D; รอดำเนินการ &lt;br&gt; invoicedelivered &#x3D; รอเก็บเงิน &lt;br&gt; void &#x3D; ยกเลิก |
-
-### Return type
-
-[**\OpenAPI\Client\Model\InlineDocumentResponse**](../Model/InlineDocumentResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
-[[Back to README]](../../README.md)
 
 
 ## taxInvoicesEmailDocumentPost
@@ -252,6 +192,64 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## taxInvoicesIdDelete
+
+> \OpenAPI\Client\Model\DeleteResponse taxInvoicesIdDelete($authorization, $id)
+
+Get tax invoices document.
+
+ลบ เอกสารใบกำกับภาษี หรือ ใบกำกับภาษี/ใบเสร็จรับเงิน ตามเลขที่เอกสารที่ต้องการ <br> ** การลบเอกสาร เอกสารต้องอยู่ในสถานะรอดำเนินการ
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new OpenAPI\Client\Api\TaxInvoiceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$authorization = 'Bearer accessToken'; // string | 
+$id = 'id_example'; // string | ID เอกสารใช้ recordId
+
+try {
+    $result = $apiInstance->taxInvoicesIdDelete($authorization, $id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TaxInvoiceApi->taxInvoicesIdDelete: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string**|  | [default to &#39;Bearer accessToken&#39;]
+ **id** | **string**| ID เอกสารใช้ recordId |
+
+### Return type
+
+[**\OpenAPI\Client\Model\DeleteResponse**](../Model/DeleteResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
@@ -443,7 +441,7 @@ No authorization required
 
 Create tax invocie document with discount and tax inline.
 
-สร้างเอกสารใบกำกับภาษี หรือ ใบกำกับภาษี/ใบเสร็จรับเงิน แบบส่วนลด หรือ ภาษี แยกตามรายการสินค้า เมื่อสร้างสำเร็จสถานะเอกสารจะอยู่ในสถานะ รอดำเนินการ (awaiting) <br> <br> ข้อมูลการออกเอกสารใบเสนอราคา : https://flowaccount.com/blog/ใบกำกับภาษี
+สร้างเอกสารใบกำกับภาษี หรือ ใบกำกับภาษี/ใบเสร็จรับเงิน แบบส่วนลด หรือ ภาษี แยกตามรายการสินค้า เมื่อสร้างสำเร็จสถานะเอกสารจะอยู่ในสถานะ รอดำเนินการ (awaiting) <br> <br> ข้อมูลการออกเอกสารใบกำกับภาษี : https://flowaccount.com/blog/ใบกำกับภาษี
 
 ### Example
 
@@ -501,7 +499,7 @@ No authorization required
 
 Create tax invocie document.
 
-สร้างเอกสารใบกำกับภาษี หรือ ใบกำกับภาษี/ใบเสร็จรับเงิน เมื่อสร้างสำเร็จสถานะเอกสารจะอยู่ในสถานะ รอดำเนินการ (awaiting) <br> <br> ข้อมูลการออกเอกสารใบเสนอราคา : https://flowaccount.com/blog/ใบกำกับภาษี
+สร้างเอกสารใบกำกับภาษี หรือ ใบกำกับภาษี/ใบเสร็จรับเงิน เมื่อสร้างสำเร็จสถานะเอกสารจะอยู่ในสถานะ รอดำเนินการ (awaiting) <br> <br> ข้อมูลการออกเอกสารใบกำกับภาษี : https://flowaccount.com/blog/ใบกำกับภาษี
 
 ### Example
 
