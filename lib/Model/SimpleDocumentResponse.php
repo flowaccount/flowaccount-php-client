@@ -55,7 +55,7 @@ class SimpleDocumentResponse extends DocumentResponse
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => 'object'
+        'data' => '\OpenAPI\Client\Model\SimpleDocumentResponseAllOfData'
     ];
 
     /**
@@ -201,7 +201,7 @@ class SimpleDocumentResponse extends DocumentResponse
     /**
      * Gets data
      *
-     * @return object|null
+     * @return \OpenAPI\Client\Model\SimpleDocumentResponseAllOfData|null
      */
     public function getData()
     {
@@ -211,7 +211,7 @@ class SimpleDocumentResponse extends DocumentResponse
     /**
      * Sets data
      *
-     * @param object|null $data data
+     * @param \OpenAPI\Client\Model\SimpleDocumentResponseAllOfData|null $data data
      *
      * @return $this
      */

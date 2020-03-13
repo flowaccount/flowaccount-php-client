@@ -57,7 +57,7 @@ class InlineDocumentResponseAllOf implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => 'object'
+        'data' => '\OpenAPI\Client\Model\InlineDocumentResponseAllOfData'
     ];
 
     /**
@@ -207,7 +207,7 @@ class InlineDocumentResponseAllOf implements ModelInterface, ArrayAccess
     /**
      * Gets data
      *
-     * @return object|null
+     * @return \OpenAPI\Client\Model\InlineDocumentResponseAllOfData|null
      */
     public function getData()
     {
@@ -217,7 +217,7 @@ class InlineDocumentResponseAllOf implements ModelInterface, ArrayAccess
     /**
      * Sets data
      *
-     * @param object|null $data data
+     * @param \OpenAPI\Client\Model\InlineDocumentResponseAllOfData|null $data data
      *
      * @return $this
      */

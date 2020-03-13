@@ -55,7 +55,7 @@ class InlineDocumentResponse extends DocumentResponse
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => 'object'
+        'data' => '\OpenAPI\Client\Model\InlineDocumentResponseAllOfData'
     ];
 
     /**
@@ -201,7 +201,7 @@ class InlineDocumentResponse extends DocumentResponse
     /**
      * Gets data
      *
-     * @return object|null
+     * @return \OpenAPI\Client\Model\InlineDocumentResponseAllOfData|null
      */
     public function getData()
     {
@@ -211,7 +211,7 @@ class InlineDocumentResponse extends DocumentResponse
     /**
      * Sets data
      *
-     * @param object|null $data data
+     * @param \OpenAPI\Client\Model\InlineDocumentResponseAllOfData|null $data data
      *
      * @return $this
      */

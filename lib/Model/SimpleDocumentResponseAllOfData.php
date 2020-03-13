@@ -1,6 +1,6 @@
 <?php
 /**
- * Document
+ * SimpleDocumentResponseAllOfData
  *
  * PHP version 5
  *
@@ -33,23 +33,23 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * Document Class Doc Comment
+ * SimpleDocumentResponseAllOfData Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class Document implements ModelInterface, ArrayAccess
+class SimpleDocumentResponseAllOfData implements ModelInterface, ArrayAccess
 {
-    const DISCRIMINATOR = 'document_structure_type';
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Document';
+    protected static $openAPIModelName = 'SimpleDocumentResponse_allOf_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,6 +58,8 @@ class Document implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'record_id' => 'int',
+        'document_id' => 'int',
+        'document_serial' => 'string',
         'contact_code' => 'string',
         'contact_name' => 'string',
         'contact_address' => 'string',
@@ -81,18 +83,25 @@ class Document implements ModelInterface, ArrayAccess
         'discount_percentage' => 'int',
         'discount_amount' => 'float',
         'total_after_discount' => 'float',
+        'total_without_vat' => 'float',
         'is_vat' => 'bool',
         'vat_amount' => 'float',
         'grand_total' => 'float',
         'document_show_withholding_tax' => 'bool',
         'document_withholding_tax_percentage' => 'int',
-        'document_withholding_tax_amount' => 'float',
         'document_deduction_type' => 'int',
         'document_deduction_amount' => 'float',
         'remarks' => 'string',
         'internal_notes' => 'string',
         'show_signature_or_stamp' => 'bool',
-        'document_structure_type' => 'string'
+        'items' => '\OpenAPI\Client\Model\SimpleProductItem[]',
+        'referenced_to_me' => '\OpenAPI\Client\Model\ReferencedToMe[]',
+        'referenced_by_me' => '\OpenAPI\Client\Model\ReferencedByMe[]',
+        'payments' => '\OpenAPI\Client\Model\PaymentDocumentResponse[]',
+        'status' => 'int',
+        'status_string' => 'int',
+        'document_type' => 'int',
+        'allow_delete' => 'bool'
     ];
 
     /**
@@ -102,6 +111,8 @@ class Document implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'record_id' => 'int64',
+        'document_id' => 'int64',
+        'document_serial' => null,
         'contact_code' => null,
         'contact_name' => null,
         'contact_address' => null,
@@ -125,18 +136,25 @@ class Document implements ModelInterface, ArrayAccess
         'discount_percentage' => null,
         'discount_amount' => 'decimal',
         'total_after_discount' => 'decimal',
+        'total_without_vat' => 'decimal',
         'is_vat' => null,
         'vat_amount' => 'decimal',
         'grand_total' => 'decimal',
         'document_show_withholding_tax' => null,
         'document_withholding_tax_percentage' => null,
-        'document_withholding_tax_amount' => 'decimal',
         'document_deduction_type' => null,
         'document_deduction_amount' => 'decimal',
         'remarks' => null,
         'internal_notes' => null,
         'show_signature_or_stamp' => null,
-        'document_structure_type' => null
+        'items' => null,
+        'referenced_to_me' => null,
+        'referenced_by_me' => null,
+        'payments' => null,
+        'status' => null,
+        'status_string' => null,
+        'document_type' => null,
+        'allow_delete' => null
     ];
 
     /**
@@ -167,6 +185,8 @@ class Document implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'record_id' => 'recordId',
+        'document_id' => 'documentId',
+        'document_serial' => 'documentSerial',
         'contact_code' => 'contactCode',
         'contact_name' => 'contactName',
         'contact_address' => 'contactAddress',
@@ -190,18 +210,25 @@ class Document implements ModelInterface, ArrayAccess
         'discount_percentage' => 'discountPercentage',
         'discount_amount' => 'discountAmount',
         'total_after_discount' => 'totalAfterDiscount',
+        'total_without_vat' => 'totalWithoutVat',
         'is_vat' => 'isVat',
         'vat_amount' => 'vatAmount',
         'grand_total' => 'grandTotal',
         'document_show_withholding_tax' => 'documentShowWithholdingTax',
         'document_withholding_tax_percentage' => 'documentWithholdingTaxPercentage',
-        'document_withholding_tax_amount' => 'documentWithholdingTaxAmount',
         'document_deduction_type' => 'documentDeductionType',
         'document_deduction_amount' => 'documentDeductionAmount',
         'remarks' => 'remarks',
         'internal_notes' => 'internalNotes',
         'show_signature_or_stamp' => 'showSignatureOrStamp',
-        'document_structure_type' => 'documentStructureType'
+        'items' => 'items',
+        'referenced_to_me' => 'referencedToMe',
+        'referenced_by_me' => 'referencedByMe',
+        'payments' => 'payments',
+        'status' => 'status',
+        'status_string' => 'statusString',
+        'document_type' => 'documentType',
+        'allow_delete' => 'allowDelete'
     ];
 
     /**
@@ -211,6 +238,8 @@ class Document implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'record_id' => 'setRecordId',
+        'document_id' => 'setDocumentId',
+        'document_serial' => 'setDocumentSerial',
         'contact_code' => 'setContactCode',
         'contact_name' => 'setContactName',
         'contact_address' => 'setContactAddress',
@@ -234,18 +263,25 @@ class Document implements ModelInterface, ArrayAccess
         'discount_percentage' => 'setDiscountPercentage',
         'discount_amount' => 'setDiscountAmount',
         'total_after_discount' => 'setTotalAfterDiscount',
+        'total_without_vat' => 'setTotalWithoutVat',
         'is_vat' => 'setIsVat',
         'vat_amount' => 'setVatAmount',
         'grand_total' => 'setGrandTotal',
         'document_show_withholding_tax' => 'setDocumentShowWithholdingTax',
         'document_withholding_tax_percentage' => 'setDocumentWithholdingTaxPercentage',
-        'document_withholding_tax_amount' => 'setDocumentWithholdingTaxAmount',
         'document_deduction_type' => 'setDocumentDeductionType',
         'document_deduction_amount' => 'setDocumentDeductionAmount',
         'remarks' => 'setRemarks',
         'internal_notes' => 'setInternalNotes',
         'show_signature_or_stamp' => 'setShowSignatureOrStamp',
-        'document_structure_type' => 'setDocumentStructureType'
+        'items' => 'setItems',
+        'referenced_to_me' => 'setReferencedToMe',
+        'referenced_by_me' => 'setReferencedByMe',
+        'payments' => 'setPayments',
+        'status' => 'setStatus',
+        'status_string' => 'setStatusString',
+        'document_type' => 'setDocumentType',
+        'allow_delete' => 'setAllowDelete'
     ];
 
     /**
@@ -255,6 +291,8 @@ class Document implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'record_id' => 'getRecordId',
+        'document_id' => 'getDocumentId',
+        'document_serial' => 'getDocumentSerial',
         'contact_code' => 'getContactCode',
         'contact_name' => 'getContactName',
         'contact_address' => 'getContactAddress',
@@ -278,18 +316,25 @@ class Document implements ModelInterface, ArrayAccess
         'discount_percentage' => 'getDiscountPercentage',
         'discount_amount' => 'getDiscountAmount',
         'total_after_discount' => 'getTotalAfterDiscount',
+        'total_without_vat' => 'getTotalWithoutVat',
         'is_vat' => 'getIsVat',
         'vat_amount' => 'getVatAmount',
         'grand_total' => 'getGrandTotal',
         'document_show_withholding_tax' => 'getDocumentShowWithholdingTax',
         'document_withholding_tax_percentage' => 'getDocumentWithholdingTaxPercentage',
-        'document_withholding_tax_amount' => 'getDocumentWithholdingTaxAmount',
         'document_deduction_type' => 'getDocumentDeductionType',
         'document_deduction_amount' => 'getDocumentDeductionAmount',
         'remarks' => 'getRemarks',
         'internal_notes' => 'getInternalNotes',
         'show_signature_or_stamp' => 'getShowSignatureOrStamp',
-        'document_structure_type' => 'getDocumentStructureType'
+        'items' => 'getItems',
+        'referenced_to_me' => 'getReferencedToMe',
+        'referenced_by_me' => 'getReferencedByMe',
+        'payments' => 'getPayments',
+        'status' => 'getStatus',
+        'status_string' => 'getStatusString',
+        'document_type' => 'getDocumentType',
+        'allow_delete' => 'getAllowDelete'
     ];
 
     /**
@@ -353,6 +398,8 @@ class Document implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['record_id'] = isset($data['record_id']) ? $data['record_id'] : 0;
+        $this->container['document_id'] = isset($data['document_id']) ? $data['document_id'] : 0;
+        $this->container['document_serial'] = isset($data['document_serial']) ? $data['document_serial'] : null;
         $this->container['contact_code'] = isset($data['contact_code']) ? $data['contact_code'] : null;
         $this->container['contact_name'] = isset($data['contact_name']) ? $data['contact_name'] : null;
         $this->container['contact_address'] = isset($data['contact_address']) ? $data['contact_address'] : null;
@@ -376,21 +423,25 @@ class Document implements ModelInterface, ArrayAccess
         $this->container['discount_percentage'] = isset($data['discount_percentage']) ? $data['discount_percentage'] : 0;
         $this->container['discount_amount'] = isset($data['discount_amount']) ? $data['discount_amount'] : 0;
         $this->container['total_after_discount'] = isset($data['total_after_discount']) ? $data['total_after_discount'] : null;
+        $this->container['total_without_vat'] = isset($data['total_without_vat']) ? $data['total_without_vat'] : null;
         $this->container['is_vat'] = isset($data['is_vat']) ? $data['is_vat'] : false;
         $this->container['vat_amount'] = isset($data['vat_amount']) ? $data['vat_amount'] : null;
         $this->container['grand_total'] = isset($data['grand_total']) ? $data['grand_total'] : null;
         $this->container['document_show_withholding_tax'] = isset($data['document_show_withholding_tax']) ? $data['document_show_withholding_tax'] : false;
         $this->container['document_withholding_tax_percentage'] = isset($data['document_withholding_tax_percentage']) ? $data['document_withholding_tax_percentage'] : 0;
-        $this->container['document_withholding_tax_amount'] = isset($data['document_withholding_tax_amount']) ? $data['document_withholding_tax_amount'] : 0;
         $this->container['document_deduction_type'] = isset($data['document_deduction_type']) ? $data['document_deduction_type'] : 0;
         $this->container['document_deduction_amount'] = isset($data['document_deduction_amount']) ? $data['document_deduction_amount'] : 0;
         $this->container['remarks'] = isset($data['remarks']) ? $data['remarks'] : null;
         $this->container['internal_notes'] = isset($data['internal_notes']) ? $data['internal_notes'] : null;
         $this->container['show_signature_or_stamp'] = isset($data['show_signature_or_stamp']) ? $data['show_signature_or_stamp'] : true;
-        $this->container['document_structure_type'] = isset($data['document_structure_type']) ? $data['document_structure_type'] : null;
-
-        // Initialize discriminator property with the model name.
-        $this->container['document_structure_type'] = static::$openAPIModelName;
+        $this->container['items'] = isset($data['items']) ? $data['items'] : null;
+        $this->container['referenced_to_me'] = isset($data['referenced_to_me']) ? $data['referenced_to_me'] : null;
+        $this->container['referenced_by_me'] = isset($data['referenced_by_me']) ? $data['referenced_by_me'] : null;
+        $this->container['payments'] = isset($data['payments']) ? $data['payments'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['status_string'] = isset($data['status_string']) ? $data['status_string'] : null;
+        $this->container['document_type'] = isset($data['document_type']) ? $data['document_type'] : null;
+        $this->container['allow_delete'] = isset($data['allow_delete']) ? $data['allow_delete'] : null;
     }
 
     /**
@@ -402,24 +453,6 @@ class Document implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['contact_name'] === null) {
-            $invalidProperties[] = "'contact_name' can't be null";
-        }
-        if ($this->container['published_on'] === null) {
-            $invalidProperties[] = "'published_on' can't be null";
-        }
-        if ($this->container['due_date'] === null) {
-            $invalidProperties[] = "'due_date' can't be null";
-        }
-        if ($this->container['total_after_discount'] === null) {
-            $invalidProperties[] = "'total_after_discount' can't be null";
-        }
-        if ($this->container['grand_total'] === null) {
-            $invalidProperties[] = "'grand_total' can't be null";
-        }
-        if ($this->container['document_structure_type'] === null) {
-            $invalidProperties[] = "'document_structure_type' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -460,6 +493,54 @@ class Document implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets document_id
+     *
+     * @return int|null
+     */
+    public function getDocumentId()
+    {
+        return $this->container['document_id'];
+    }
+
+    /**
+     * Sets document_id
+     *
+     * @param int|null $document_id id ของเอกสาร
+     *
+     * @return $this
+     */
+    public function setDocumentId($document_id)
+    {
+        $this->container['document_id'] = $document_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets document_serial
+     *
+     * @return string|null
+     */
+    public function getDocumentSerial()
+    {
+        return $this->container['document_serial'];
+    }
+
+    /**
+     * Sets document_serial
+     *
+     * @param string|null $document_serial เลขที่เอกสาร
+     *
+     * @return $this
+     */
+    public function setDocumentSerial($document_serial)
+    {
+        $this->container['document_serial'] = $document_serial;
+
+        return $this;
+    }
+
+    /**
      * Gets contact_code
      *
      * @return string|null
@@ -486,7 +567,7 @@ class Document implements ModelInterface, ArrayAccess
     /**
      * Gets contact_name
      *
-     * @return string
+     * @return string|null
      */
     public function getContactName()
     {
@@ -496,7 +577,7 @@ class Document implements ModelInterface, ArrayAccess
     /**
      * Sets contact_name
      *
-     * @param string $contact_name ชื่อ ลูกค้า/ผู้จำหน่าย <br> <ex>Example: บริษัท ลูกค้า จำกัด, คุณลูกค้า ซื้อประจำ</ex>
+     * @param string|null $contact_name ชื่อ ลูกค้า/ผู้จำหน่าย <br> <ex>Example: บริษัท ลูกค้า จำกัด, คุณลูกค้า ซื้อประจำ</ex>
      *
      * @return $this
      */
@@ -702,7 +783,7 @@ class Document implements ModelInterface, ArrayAccess
     /**
      * Gets published_on
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getPublishedOn()
     {
@@ -712,7 +793,7 @@ class Document implements ModelInterface, ArrayAccess
     /**
      * Sets published_on
      *
-     * @param \DateTime $published_on วันที่เอกสาร รูปแบบ yyyy-MM-dd <br> <ex>Example: 2020-01-01</ex>
+     * @param \DateTime|null $published_on วันที่เอกสาร รูปแบบ yyyy-MM-dd <br> <ex>Example: 2020-01-01</ex>
      *
      * @return $this
      */
@@ -774,7 +855,7 @@ class Document implements ModelInterface, ArrayAccess
     /**
      * Gets due_date
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getDueDate()
     {
@@ -784,7 +865,7 @@ class Document implements ModelInterface, ArrayAccess
     /**
      * Sets due_date
      *
-     * @param \DateTime $due_date วันครบกำหนดเอกสาร รูปแบบ yyyy-MM-dd <br> <ex>Example: 2020-01-01</ex>
+     * @param \DateTime|null $due_date วันครบกำหนดเอกสาร รูปแบบ yyyy-MM-dd <br> <ex>Example: 2020-01-01</ex>
      *
      * @return $this
      */
@@ -990,7 +1071,7 @@ class Document implements ModelInterface, ArrayAccess
     /**
      * Gets total_after_discount
      *
-     * @return float
+     * @return float|null
      */
     public function getTotalAfterDiscount()
     {
@@ -1000,13 +1081,37 @@ class Document implements ModelInterface, ArrayAccess
     /**
      * Sets total_after_discount
      *
-     * @param float $total_after_discount มูลค่าหลังหักส่วนลด
+     * @param float|null $total_after_discount มูลค่าหลังหักส่วนลด
      *
      * @return $this
      */
     public function setTotalAfterDiscount($total_after_discount)
     {
         $this->container['total_after_discount'] = $total_after_discount;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_without_vat
+     *
+     * @return float|null
+     */
+    public function getTotalWithoutVat()
+    {
+        return $this->container['total_without_vat'];
+    }
+
+    /**
+     * Sets total_without_vat
+     *
+     * @param float|null $total_without_vat มูลค่าไม่รวมภาษีมูลค่าเพิ่ม
+     *
+     * @return $this
+     */
+    public function setTotalWithoutVat($total_without_vat)
+    {
+        $this->container['total_without_vat'] = $total_without_vat;
 
         return $this;
     }
@@ -1062,7 +1167,7 @@ class Document implements ModelInterface, ArrayAccess
     /**
      * Gets grand_total
      *
-     * @return float
+     * @return float|null
      */
     public function getGrandTotal()
     {
@@ -1072,7 +1177,7 @@ class Document implements ModelInterface, ArrayAccess
     /**
      * Sets grand_total
      *
-     * @param float $grand_total จำนวนเงินรวมทั้งสิ้น (รวมภาษีมูลค่าเพิ่ม 7% แล้ว)
+     * @param float|null $grand_total จำนวนเงินรวมทั้งสิ้น (รวมภาษีมูลค่าเพิ่ม 7% แล้ว)
      *
      * @return $this
      */
@@ -1127,30 +1232,6 @@ class Document implements ModelInterface, ArrayAccess
     public function setDocumentWithholdingTaxPercentage($document_withholding_tax_percentage)
     {
         $this->container['document_withholding_tax_percentage'] = $document_withholding_tax_percentage;
-
-        return $this;
-    }
-
-    /**
-     * Gets document_withholding_tax_amount
-     *
-     * @return float|null
-     */
-    public function getDocumentWithholdingTaxAmount()
-    {
-        return $this->container['document_withholding_tax_amount'];
-    }
-
-    /**
-     * Sets document_withholding_tax_amount
-     *
-     * @param float|null $document_withholding_tax_amount มูลค่าภาษีหัก ณ ที่จ่าย
-     *
-     * @return $this
-     */
-    public function setDocumentWithholdingTaxAmount($document_withholding_tax_amount)
-    {
-        $this->container['document_withholding_tax_amount'] = $document_withholding_tax_amount;
 
         return $this;
     }
@@ -1276,25 +1357,193 @@ class Document implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets document_structure_type
+     * Gets items
      *
-     * @return string
+     * @return \OpenAPI\Client\Model\SimpleProductItem[]|null
      */
-    public function getDocumentStructureType()
+    public function getItems()
     {
-        return $this->container['document_structure_type'];
+        return $this->container['items'];
     }
 
     /**
-     * Sets document_structure_type
+     * Sets items
      *
-     * @param string $document_structure_type document_structure_type
+     * @param \OpenAPI\Client\Model\SimpleProductItem[]|null $items รายการสินค้าใช้งานสำหรับเอกสาร Simple Document
      *
      * @return $this
      */
-    public function setDocumentStructureType($document_structure_type)
+    public function setItems($items)
     {
-        $this->container['document_structure_type'] = $document_structure_type;
+        $this->container['items'] = $items;
+
+        return $this;
+    }
+
+    /**
+     * Gets referenced_to_me
+     *
+     * @return \OpenAPI\Client\Model\ReferencedToMe[]|null
+     */
+    public function getReferencedToMe()
+    {
+        return $this->container['referenced_to_me'];
+    }
+
+    /**
+     * Sets referenced_to_me
+     *
+     * @param \OpenAPI\Client\Model\ReferencedToMe[]|null $referenced_to_me ข้อมูลเอกสารปลายทางที่อ้างอิง ถึง เอกสารฉบับนี้
+     *
+     * @return $this
+     */
+    public function setReferencedToMe($referenced_to_me)
+    {
+        $this->container['referenced_to_me'] = $referenced_to_me;
+
+        return $this;
+    }
+
+    /**
+     * Gets referenced_by_me
+     *
+     * @return \OpenAPI\Client\Model\ReferencedByMe[]|null
+     */
+    public function getReferencedByMe()
+    {
+        return $this->container['referenced_by_me'];
+    }
+
+    /**
+     * Sets referenced_by_me
+     *
+     * @param \OpenAPI\Client\Model\ReferencedByMe[]|null $referenced_by_me เอกสารต้นทางที่อ้างอิง ถึง เอกสารฉบับนี้
+     *
+     * @return $this
+     */
+    public function setReferencedByMe($referenced_by_me)
+    {
+        $this->container['referenced_by_me'] = $referenced_by_me;
+
+        return $this;
+    }
+
+    /**
+     * Gets payments
+     *
+     * @return \OpenAPI\Client\Model\PaymentDocumentResponse[]|null
+     */
+    public function getPayments()
+    {
+        return $this->container['payments'];
+    }
+
+    /**
+     * Sets payments
+     *
+     * @param \OpenAPI\Client\Model\PaymentDocumentResponse[]|null $payments ข้อมูลการเก็บเงินและจ่ายเงินของเอกสาร <br> ข้อมูลการเก็บเงิน: <br>1. ใบกำกับภาษี/ใบเสร็จรับเงิน (Tax Invoice) <br> 2. ใบเสร็จรับเงิน (Receipt) <br> 3. ใบกำกับภาษี/ใบเสร็จรับเงิน (Cash Invoice) <br> ข้อมูลการจ่ายเงิน: <br>1. เอกสารใบรับสินค้า (Receiving Inventory)
+     *
+     * @return $this
+     */
+    public function setPayments($payments)
+    {
+        $this->container['payments'] = $payments;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return int|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param int|null $status เลขสถานะเอกสารฉบับนี้
+     *
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_string
+     *
+     * @return int|null
+     */
+    public function getStatusString()
+    {
+        return $this->container['status_string'];
+    }
+
+    /**
+     * Sets status_string
+     *
+     * @param int|null $status_string ชื่อสถานะเอกสารฉบับนี้
+     *
+     * @return $this
+     */
+    public function setStatusString($status_string)
+    {
+        $this->container['status_string'] = $status_string;
+
+        return $this;
+    }
+
+    /**
+     * Gets document_type
+     *
+     * @return int|null
+     */
+    public function getDocumentType()
+    {
+        return $this->container['document_type'];
+    }
+
+    /**
+     * Sets document_type
+     *
+     * @param int|null $document_type เลขประเภทเอกสารฉบับนี้
+     *
+     * @return $this
+     */
+    public function setDocumentType($document_type)
+    {
+        $this->container['document_type'] = $document_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_delete
+     *
+     * @return bool|null
+     */
+    public function getAllowDelete()
+    {
+        return $this->container['allow_delete'];
+    }
+
+    /**
+     * Sets allow_delete
+     *
+     * @param bool|null $allow_delete สามารถลบเอกสาร :<br> true = ลบได้ <br> false = ลบไม่ได้
+     *
+     * @return $this
+     */
+    public function setAllowDelete($allow_delete)
+    {
+        $this->container['allow_delete'] = $allow_delete;
 
         return $this;
     }

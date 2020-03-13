@@ -210,6 +210,7 @@ Class | Method | HTTP request | Description
  - [InlineDocumentAllOf](docs/Model/InlineDocumentAllOf.md)
  - [InlineDocumentResponse](docs/Model/InlineDocumentResponse.md)
  - [InlineDocumentResponseAllOf](docs/Model/InlineDocumentResponseAllOf.md)
+ - [InlineDocumentResponseAllOfData](docs/Model/InlineDocumentResponseAllOfData.md)
  - [InlineObject](docs/Model/InlineObject.md)
  - [InlineObject1](docs/Model/InlineObject1.md)
  - [InlineObject2](docs/Model/InlineObject2.md)
@@ -243,6 +244,7 @@ Class | Method | HTTP request | Description
  - [SimpleDocumentAllOf](docs/Model/SimpleDocumentAllOf.md)
  - [SimpleDocumentResponse](docs/Model/SimpleDocumentResponse.md)
  - [SimpleDocumentResponseAllOf](docs/Model/SimpleDocumentResponseAllOf.md)
+ - [SimpleDocumentResponseAllOfData](docs/Model/SimpleDocumentResponseAllOfData.md)
  - [SimpleProductItem](docs/Model/SimpleProductItem.md)
  - [StatusDocument](docs/Model/StatusDocument.md)
  - [UpgradeDocument](docs/Model/UpgradeDocument.md)
@@ -258,6 +260,6 @@ All endpoints do not require authorization.
 
 ## Author
 
-email: developer@flowaccount.com
-phone: 02-026-8989
+Email: developer@flowaccount.com
+Tel: 02-026-8989
 
