@@ -13,7 +13,7 @@
 /**
  * FlowAccount Open API
  *
- * FlowAccount.com โปรแกรมบัญชีออนไลน์ใช้งานง่าย สำหรับธุรกิจที่พึ่งเริ่มต้น
+ * FlowAccount.com โปรแกรมบัญชีออนไลน์ใช้งานง่าย สำหรับธุรกิจที่พึ่งเริ่มต้น   # Introduction **Servers Production**    site: https://www.flowaccount.com    api url: https://openapi.flowaccount.com/v1    **Beta test**   site: http://sandbox-new.flowaccount.com/    api url: https://openapi.flowaccount.com/test
  *
  * The version of the OpenAPI document: 2-oas3
  * Contact: developer@flowaccount.com
@@ -187,6 +187,34 @@ class ProductResponseDataTest extends TestCase
      * Test attribute "inventory_price"
      */
     public function testPropertyInventoryPrice()
+    {
+    }
+
+    /**
+     * Test attribute "average_buy_price"
+     */
+    public function testPropertyAverageBuyPrice()
+    {
+    }
+
+    /**
+     * Test attribute "average_sell_price"
+     */
+    public function testPropertyAverageSellPrice()
+    {
+    }
+
+    /**
+     * Test attribute "remaining_stock"
+     */
+    public function testPropertyRemainingStock()
+    {
+    }
+
+    /**
+     * Test attribute "total_value_in_hand"
+     */
+    public function testPropertyTotalValueInHand()
     {
     }
 }

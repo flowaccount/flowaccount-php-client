@@ -20,6 +20,10 @@ Name | Type | Description | Notes
 **inventory_published_on** | [**\DateTime**](\DateTime.md) | วันที่ตั้งต้นสินค้า รูปแบบ yyyy-MM-dd &lt;br&gt; &lt;ex&gt;Example: 2020-01-01&lt;/ex&gt; | [optional] 
 **inventory_quantity** | **float** | จำนวนยอดตั้งต้นสินค้า | [optional] 
 **inventory_price** | **float** | ราคาซื้อสินค้า | [optional] 
+**average_buy_price** | **float** | ราคาซื้อเฉลี่ยสินค้า | [optional] 
+**average_sell_price** | **float** | ราคาขายเฉลี่ยสินค้า | [optional] 
+**remaining_stock** | **float** | จำนวนสินค้าคงเหลือในสต๊อก | [optional] 
+**total_value_in_hand** | **float** | มูลค่าสินค้าคงเหลือในสต๊อก | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

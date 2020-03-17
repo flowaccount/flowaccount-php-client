@@ -72,7 +72,11 @@ class ProductResponseData implements ModelInterface, ArrayAccess
         'buy_vat_type' => 'int',
         'inventory_published_on' => '\DateTime',
         'inventory_quantity' => 'float',
-        'inventory_price' => 'float'
+        'inventory_price' => 'float',
+        'average_buy_price' => 'float',
+        'average_sell_price' => 'float',
+        'remaining_stock' => 'float',
+        'total_value_in_hand' => 'float'
     ];
 
     /**
@@ -96,7 +100,11 @@ class ProductResponseData implements ModelInterface, ArrayAccess
         'buy_vat_type' => 'int64',
         'inventory_published_on' => 'date',
         'inventory_quantity' => 'decimal',
-        'inventory_price' => 'decimal'
+        'inventory_price' => 'decimal',
+        'average_buy_price' => 'decimal',
+        'average_sell_price' => 'decimal',
+        'remaining_stock' => 'decimal',
+        'total_value_in_hand' => 'decimal'
     ];
 
     /**
@@ -141,7 +149,11 @@ class ProductResponseData implements ModelInterface, ArrayAccess
         'buy_vat_type' => 'buyVatType',
         'inventory_published_on' => 'inventoryPublishedOn',
         'inventory_quantity' => 'inventoryQuantity',
-        'inventory_price' => 'inventoryPrice'
+        'inventory_price' => 'inventoryPrice',
+        'average_buy_price' => 'averageBuyPrice',
+        'average_sell_price' => 'averageSellPrice',
+        'remaining_stock' => 'remainingStock',
+        'total_value_in_hand' => 'totalValueInHand'
     ];
 
     /**
@@ -165,7 +177,11 @@ class ProductResponseData implements ModelInterface, ArrayAccess
         'buy_vat_type' => 'setBuyVatType',
         'inventory_published_on' => 'setInventoryPublishedOn',
         'inventory_quantity' => 'setInventoryQuantity',
-        'inventory_price' => 'setInventoryPrice'
+        'inventory_price' => 'setInventoryPrice',
+        'average_buy_price' => 'setAverageBuyPrice',
+        'average_sell_price' => 'setAverageSellPrice',
+        'remaining_stock' => 'setRemainingStock',
+        'total_value_in_hand' => 'setTotalValueInHand'
     ];
 
     /**
@@ -189,7 +205,11 @@ class ProductResponseData implements ModelInterface, ArrayAccess
         'buy_vat_type' => 'getBuyVatType',
         'inventory_published_on' => 'getInventoryPublishedOn',
         'inventory_quantity' => 'getInventoryQuantity',
-        'inventory_price' => 'getInventoryPrice'
+        'inventory_price' => 'getInventoryPrice',
+        'average_buy_price' => 'getAverageBuyPrice',
+        'average_sell_price' => 'getAverageSellPrice',
+        'remaining_stock' => 'getRemainingStock',
+        'total_value_in_hand' => 'getTotalValueInHand'
     ];
 
     /**
@@ -268,6 +288,10 @@ class ProductResponseData implements ModelInterface, ArrayAccess
         $this->container['inventory_published_on'] = isset($data['inventory_published_on']) ? $data['inventory_published_on'] : null;
         $this->container['inventory_quantity'] = isset($data['inventory_quantity']) ? $data['inventory_quantity'] : null;
         $this->container['inventory_price'] = isset($data['inventory_price']) ? $data['inventory_price'] : null;
+        $this->container['average_buy_price'] = isset($data['average_buy_price']) ? $data['average_buy_price'] : null;
+        $this->container['average_sell_price'] = isset($data['average_sell_price']) ? $data['average_sell_price'] : null;
+        $this->container['remaining_stock'] = isset($data['remaining_stock']) ? $data['remaining_stock'] : null;
+        $this->container['total_value_in_hand'] = isset($data['total_value_in_hand']) ? $data['total_value_in_hand'] : null;
     }
 
     /**
@@ -674,6 +698,102 @@ class ProductResponseData implements ModelInterface, ArrayAccess
     public function setInventoryPrice($inventory_price)
     {
         $this->container['inventory_price'] = $inventory_price;
+
+        return $this;
+    }
+
+    /**
+     * Gets average_buy_price
+     *
+     * @return float|null
+     */
+    public function getAverageBuyPrice()
+    {
+        return $this->container['average_buy_price'];
+    }
+
+    /**
+     * Sets average_buy_price
+     *
+     * @param float|null $average_buy_price ราคาซื้อเฉลี่ยสินค้า
+     *
+     * @return $this
+     */
+    public function setAverageBuyPrice($average_buy_price)
+    {
+        $this->container['average_buy_price'] = $average_buy_price;
+
+        return $this;
+    }
+
+    /**
+     * Gets average_sell_price
+     *
+     * @return float|null
+     */
+    public function getAverageSellPrice()
+    {
+        return $this->container['average_sell_price'];
+    }
+
+    /**
+     * Sets average_sell_price
+     *
+     * @param float|null $average_sell_price ราคาขายเฉลี่ยสินค้า
+     *
+     * @return $this
+     */
+    public function setAverageSellPrice($average_sell_price)
+    {
+        $this->container['average_sell_price'] = $average_sell_price;
+
+        return $this;
+    }
+
+    /**
+     * Gets remaining_stock
+     *
+     * @return float|null
+     */
+    public function getRemainingStock()
+    {
+        return $this->container['remaining_stock'];
+    }
+
+    /**
+     * Sets remaining_stock
+     *
+     * @param float|null $remaining_stock จำนวนสินค้าคงเหลือในสต๊อก
+     *
+     * @return $this
+     */
+    public function setRemainingStock($remaining_stock)
+    {
+        $this->container['remaining_stock'] = $remaining_stock;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_value_in_hand
+     *
+     * @return float|null
+     */
+    public function getTotalValueInHand()
+    {
+        return $this->container['total_value_in_hand'];
+    }
+
+    /**
+     * Sets total_value_in_hand
+     *
+     * @param float|null $total_value_in_hand มูลค่าสินค้าคงเหลือในสต๊อก
+     *
+     * @return $this
+     */
+    public function setTotalValueInHand($total_value_in_hand)
+    {
+        $this->container['total_value_in_hand'] = $total_value_in_hand;
 
         return $this;
     }
