@@ -76,7 +76,7 @@ No authorization required
 
 ## quotationsGet
 
-> \OpenAPI\Client\Model\InlineDocumentResponse quotationsGet($authorization)
+> \OpenAPI\Client\Model\InlineDocumentResponse quotationsGet($current_page, $page_size, $authorization, $sort_by, $filter)
 
 Get list all quotations documents.
 
@@ -94,10 +94,14 @@ $apiInstance = new OpenAPI\Client\Api\QuotationsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$current_page = 56; // int | Query current page document quotations. <br>Example Pattern: <ex>/quotations?currentPage=1 </ex><ex>/quotations?currentPage=1&pageSize=20</ex>
+$page_size = 56; // int | Query document quotations list amount per page. <br>Example Pattern: <ex> /quotations?pageSize=20 </ex>
 $authorization = 'Bearer accessToken'; // string | 
+$sort_by = 'sort_by_example'; // string | 
+$filter = 'filter_example'; // string | 
 
 try {
-    $result = $apiInstance->quotationsGet($authorization);
+    $result = $apiInstance->quotationsGet($current_page, $page_size, $authorization, $sort_by, $filter);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QuotationsApi->quotationsGet: ', $e->getMessage(), PHP_EOL;
@@ -110,7 +114,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **current_page** | **int**| Query current page document quotations. &lt;br&gt;Example Pattern: &lt;ex&gt;/quotations?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/quotations?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; |
+ **page_size** | **int**| Query document quotations list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /quotations?pageSize&#x3D;20 &lt;/ex&gt; |
  **authorization** | **string**|  | [default to &#39;Bearer accessToken&#39;]
+ **sort_by** | **string**|  | [optional]
+ **filter** | **string**|  | [optional]
 
 ### Return type
 

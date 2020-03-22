@@ -938,15 +938,19 @@ class ExpensesApi
      *
      * Get list all expenses documents.
      *
+     * @param  int $current_page Query current page document expenses. &lt;br&gt;Example Pattern: &lt;ex&gt;/expenses?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/expenses?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query document expenses list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /expenses?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization authorization (required)
+     * @param  string $sort_by sort_by (optional)
+     * @param  string $filter filter (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\ExpenseInlineDocumentResponse
      */
-    public function expensesGet($authorization)
+    public function expensesGet($current_page, $page_size, $authorization, $sort_by = null, $filter = null)
     {
-        list($response) = $this->expensesGetWithHttpInfo($authorization);
+        list($response) = $this->expensesGetWithHttpInfo($current_page, $page_size, $authorization, $sort_by, $filter);
         return $response;
     }
 
@@ -955,15 +959,19 @@ class ExpensesApi
      *
      * Get list all expenses documents.
      *
+     * @param  int $current_page Query current page document expenses. &lt;br&gt;Example Pattern: &lt;ex&gt;/expenses?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/expenses?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query document expenses list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /expenses?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
+     * @param  string $sort_by (optional)
+     * @param  string $filter (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\ExpenseInlineDocumentResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function expensesGetWithHttpInfo($authorization)
+    public function expensesGetWithHttpInfo($current_page, $page_size, $authorization, $sort_by = null, $filter = null)
     {
-        $request = $this->expensesGetRequest($authorization);
+        $request = $this->expensesGetRequest($current_page, $page_size, $authorization, $sort_by, $filter);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1043,14 +1051,18 @@ class ExpensesApi
      *
      * Get list all expenses documents.
      *
+     * @param  int $current_page Query current page document expenses. &lt;br&gt;Example Pattern: &lt;ex&gt;/expenses?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/expenses?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query document expenses list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /expenses?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
+     * @param  string $sort_by (optional)
+     * @param  string $filter (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function expensesGetAsync($authorization)
+    public function expensesGetAsync($current_page, $page_size, $authorization, $sort_by = null, $filter = null)
     {
-        return $this->expensesGetAsyncWithHttpInfo($authorization)
+        return $this->expensesGetAsyncWithHttpInfo($current_page, $page_size, $authorization, $sort_by, $filter)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1063,15 +1075,19 @@ class ExpensesApi
      *
      * Get list all expenses documents.
      *
+     * @param  int $current_page Query current page document expenses. &lt;br&gt;Example Pattern: &lt;ex&gt;/expenses?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/expenses?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query document expenses list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /expenses?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
+     * @param  string $sort_by (optional)
+     * @param  string $filter (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function expensesGetAsyncWithHttpInfo($authorization)
+    public function expensesGetAsyncWithHttpInfo($current_page, $page_size, $authorization, $sort_by = null, $filter = null)
     {
         $returnType = '\OpenAPI\Client\Model\ExpenseInlineDocumentResponse';
-        $request = $this->expensesGetRequest($authorization);
+        $request = $this->expensesGetRequest($current_page, $page_size, $authorization, $sort_by, $filter);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1110,13 +1126,29 @@ class ExpensesApi
     /**
      * Create request for operation 'expensesGet'
      *
+     * @param  int $current_page Query current page document expenses. &lt;br&gt;Example Pattern: &lt;ex&gt;/expenses?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/expenses?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query document expenses list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /expenses?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
+     * @param  string $sort_by (optional)
+     * @param  string $filter (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function expensesGetRequest($authorization)
+    protected function expensesGetRequest($current_page, $page_size, $authorization, $sort_by = null, $filter = null)
     {
+        // verify the required parameter 'current_page' is set
+        if ($current_page === null || (is_array($current_page) && count($current_page) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $current_page when calling expensesGet'
+            );
+        }
+        // verify the required parameter 'page_size' is set
+        if ($page_size === null || (is_array($page_size) && count($page_size) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $page_size when calling expensesGet'
+            );
+        }
         // verify the required parameter 'authorization' is set
         if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
             throw new \InvalidArgumentException(
@@ -1131,6 +1163,22 @@ class ExpensesApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($current_page !== null) {
+            $queryParams['currentPage'] = ObjectSerializer::toQueryValue($current_page);
+        }
+        // query params
+        if ($page_size !== null) {
+            $queryParams['pageSize'] = ObjectSerializer::toQueryValue($page_size);
+        }
+        // query params
+        if ($sort_by !== null) {
+            $queryParams['sortBy'] = ObjectSerializer::toQueryValue($sort_by);
+        }
+        // query params
+        if ($filter !== null) {
+            $queryParams['filter'] = ObjectSerializer::toQueryValue($filter);
+        }
         // header params
         if ($authorization !== null) {
             $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);

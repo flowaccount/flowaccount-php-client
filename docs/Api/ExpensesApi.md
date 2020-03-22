@@ -191,7 +191,7 @@ No authorization required
 
 ## expensesGet
 
-> \OpenAPI\Client\Model\ExpenseInlineDocumentResponse expensesGet($authorization)
+> \OpenAPI\Client\Model\ExpenseInlineDocumentResponse expensesGet($current_page, $page_size, $authorization, $sort_by, $filter)
 
 Get list all expenses documents.
 
@@ -209,10 +209,14 @@ $apiInstance = new OpenAPI\Client\Api\ExpensesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$current_page = 56; // int | Query current page document expenses. <br>Example Pattern: <ex>/expenses?currentPage=1 </ex><ex>/expenses?currentPage=1&pageSize=20</ex>
+$page_size = 56; // int | Query document expenses list amount per page. <br>Example Pattern: <ex> /expenses?pageSize=20 </ex>
 $authorization = 'Bearer accessToken'; // string | 
+$sort_by = 'sort_by_example'; // string | 
+$filter = 'filter_example'; // string | 
 
 try {
-    $result = $apiInstance->expensesGet($authorization);
+    $result = $apiInstance->expensesGet($current_page, $page_size, $authorization, $sort_by, $filter);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ExpensesApi->expensesGet: ', $e->getMessage(), PHP_EOL;
@@ -225,7 +229,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **current_page** | **int**| Query current page document expenses. &lt;br&gt;Example Pattern: &lt;ex&gt;/expenses?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/expenses?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; |
+ **page_size** | **int**| Query document expenses list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /expenses?pageSize&#x3D;20 &lt;/ex&gt; |
  **authorization** | **string**|  | [default to &#39;Bearer accessToken&#39;]
+ **sort_by** | **string**|  | [optional]
+ **filter** | **string**|  | [optional]
 
 ### Return type
 

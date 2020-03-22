@@ -19,7 +19,6 @@ Name | Type | Description | Notes
 **buy_vat_type** | **int** | ภาษีซื้อ: &lt;br&gt; 1 &#x3D; ราคาซื้อรวมภาษี &lt;br&gt; 3 &#x3D; ราคาซื้อไม่รวมภาษี &lt;br&gt; 5 &#x3D; ราคาซื้อภาษี 0% &lt;br&gt; 7 &#x3D; ราคาซื้อสินค้าได้รับการยกเว้นภาษี | [optional] [default to 3]
 **inventory_published_on** | [**\DateTime**](\DateTime.md) | วันที่ตั้งต้นสินค้า รูปแบบ yyyy-MM-dd &lt;br&gt; &lt;ex&gt;Example: 2020-01-01&lt;/ex&gt; | [optional] 
 **inventory_quantity** | **float** | จำนวนยอดตั้งต้นสินค้า | [optional] 
-**inventory_price** | **float** | ราคาซื้อสินค้า | [optional] 
 **average_buy_price** | **float** | ราคาซื้อเฉลี่ยสินค้า | [optional] 
 **average_sell_price** | **float** | ราคาขายเฉลี่ยสินค้า | [optional] 
 **remaining_stock** | **float** | จำนวนสินค้าคงเหลือในสต๊อก | [optional] 

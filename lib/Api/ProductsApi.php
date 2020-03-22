@@ -120,15 +120,17 @@ class ProductsApi
      *
      * Get list all products.
      *
+     * @param  int $current_page Query current page products item. &lt;br&gt;Example Pattern: &lt;ex&gt;/products?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/products?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query products list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /products?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization authorization (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\ProductResponse
      */
-    public function productsGet($authorization)
+    public function productsGet($current_page, $page_size, $authorization)
     {
-        list($response) = $this->productsGetWithHttpInfo($authorization);
+        list($response) = $this->productsGetWithHttpInfo($current_page, $page_size, $authorization);
         return $response;
     }
 
@@ -137,15 +139,17 @@ class ProductsApi
      *
      * Get list all products.
      *
+     * @param  int $current_page Query current page products item. &lt;br&gt;Example Pattern: &lt;ex&gt;/products?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/products?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query products list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /products?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\ProductResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function productsGetWithHttpInfo($authorization)
+    public function productsGetWithHttpInfo($current_page, $page_size, $authorization)
     {
-        $request = $this->productsGetRequest($authorization);
+        $request = $this->productsGetRequest($current_page, $page_size, $authorization);
 
         try {
             $options = $this->createHttpClientOption();
@@ -225,14 +229,16 @@ class ProductsApi
      *
      * Get list all products.
      *
+     * @param  int $current_page Query current page products item. &lt;br&gt;Example Pattern: &lt;ex&gt;/products?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/products?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query products list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /products?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function productsGetAsync($authorization)
+    public function productsGetAsync($current_page, $page_size, $authorization)
     {
-        return $this->productsGetAsyncWithHttpInfo($authorization)
+        return $this->productsGetAsyncWithHttpInfo($current_page, $page_size, $authorization)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -245,15 +251,17 @@ class ProductsApi
      *
      * Get list all products.
      *
+     * @param  int $current_page Query current page products item. &lt;br&gt;Example Pattern: &lt;ex&gt;/products?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/products?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query products list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /products?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function productsGetAsyncWithHttpInfo($authorization)
+    public function productsGetAsyncWithHttpInfo($current_page, $page_size, $authorization)
     {
         $returnType = '\OpenAPI\Client\Model\ProductResponse';
-        $request = $this->productsGetRequest($authorization);
+        $request = $this->productsGetRequest($current_page, $page_size, $authorization);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -292,13 +300,27 @@ class ProductsApi
     /**
      * Create request for operation 'productsGet'
      *
+     * @param  int $current_page Query current page products item. &lt;br&gt;Example Pattern: &lt;ex&gt;/products?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/products?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query products list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /products?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function productsGetRequest($authorization)
+    protected function productsGetRequest($current_page, $page_size, $authorization)
     {
+        // verify the required parameter 'current_page' is set
+        if ($current_page === null || (is_array($current_page) && count($current_page) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $current_page when calling productsGet'
+            );
+        }
+        // verify the required parameter 'page_size' is set
+        if ($page_size === null || (is_array($page_size) && count($page_size) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $page_size when calling productsGet'
+            );
+        }
         // verify the required parameter 'authorization' is set
         if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
             throw new \InvalidArgumentException(
@@ -313,6 +335,14 @@ class ProductsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($current_page !== null) {
+            $queryParams['currentPage'] = ObjectSerializer::toQueryValue($current_page);
+        }
+        // query params
+        if ($page_size !== null) {
+            $queryParams['pageSize'] = ObjectSerializer::toQueryValue($page_size);
+        }
         // header params
         if ($authorization !== null) {
             $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);

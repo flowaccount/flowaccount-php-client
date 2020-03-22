@@ -120,15 +120,17 @@ class ContactsApi
      *
      * Get list all contacts.
      *
+     * @param  int $current_page Query current page contacts. &lt;br&gt;Example Pattern: &lt;ex&gt;/contacts?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/contacts?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query contacts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /contacts?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization authorization (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\ContactResponse
      */
-    public function contactsGet($authorization)
+    public function contactsGet($current_page, $page_size, $authorization)
     {
-        list($response) = $this->contactsGetWithHttpInfo($authorization);
+        list($response) = $this->contactsGetWithHttpInfo($current_page, $page_size, $authorization);
         return $response;
     }
 
@@ -137,15 +139,17 @@ class ContactsApi
      *
      * Get list all contacts.
      *
+     * @param  int $current_page Query current page contacts. &lt;br&gt;Example Pattern: &lt;ex&gt;/contacts?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/contacts?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query contacts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /contacts?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\ContactResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function contactsGetWithHttpInfo($authorization)
+    public function contactsGetWithHttpInfo($current_page, $page_size, $authorization)
     {
-        $request = $this->contactsGetRequest($authorization);
+        $request = $this->contactsGetRequest($current_page, $page_size, $authorization);
 
         try {
             $options = $this->createHttpClientOption();
@@ -225,14 +229,16 @@ class ContactsApi
      *
      * Get list all contacts.
      *
+     * @param  int $current_page Query current page contacts. &lt;br&gt;Example Pattern: &lt;ex&gt;/contacts?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/contacts?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query contacts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /contacts?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function contactsGetAsync($authorization)
+    public function contactsGetAsync($current_page, $page_size, $authorization)
     {
-        return $this->contactsGetAsyncWithHttpInfo($authorization)
+        return $this->contactsGetAsyncWithHttpInfo($current_page, $page_size, $authorization)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -245,15 +251,17 @@ class ContactsApi
      *
      * Get list all contacts.
      *
+     * @param  int $current_page Query current page contacts. &lt;br&gt;Example Pattern: &lt;ex&gt;/contacts?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/contacts?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query contacts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /contacts?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function contactsGetAsyncWithHttpInfo($authorization)
+    public function contactsGetAsyncWithHttpInfo($current_page, $page_size, $authorization)
     {
         $returnType = '\OpenAPI\Client\Model\ContactResponse';
-        $request = $this->contactsGetRequest($authorization);
+        $request = $this->contactsGetRequest($current_page, $page_size, $authorization);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -292,13 +300,27 @@ class ContactsApi
     /**
      * Create request for operation 'contactsGet'
      *
+     * @param  int $current_page Query current page contacts. &lt;br&gt;Example Pattern: &lt;ex&gt;/contacts?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/contacts?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query contacts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /contacts?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function contactsGetRequest($authorization)
+    protected function contactsGetRequest($current_page, $page_size, $authorization)
     {
+        // verify the required parameter 'current_page' is set
+        if ($current_page === null || (is_array($current_page) && count($current_page) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $current_page when calling contactsGet'
+            );
+        }
+        // verify the required parameter 'page_size' is set
+        if ($page_size === null || (is_array($page_size) && count($page_size) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $page_size when calling contactsGet'
+            );
+        }
         // verify the required parameter 'authorization' is set
         if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
             throw new \InvalidArgumentException(
@@ -313,6 +335,14 @@ class ContactsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($current_page !== null) {
+            $queryParams['currentPage'] = ObjectSerializer::toQueryValue($current_page);
+        }
+        // query params
+        if ($page_size !== null) {
+            $queryParams['pageSize'] = ObjectSerializer::toQueryValue($page_size);
+        }
         // header params
         if ($authorization !== null) {
             $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);

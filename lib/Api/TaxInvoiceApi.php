@@ -402,8 +402,8 @@ class TaxInvoiceApi
      *
      * Get list all tax invocie documents.
      *
-     * @param  string $current_page current_page (required)
-     * @param  string $page_size page_size (required)
+     * @param  int $current_page Query current page document tax invoices. &lt;br&gt;Example Pattern: &lt;ex&gt;/tax-invoices?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/tax-invoices?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query document tax invoices list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /tax-invoices?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization authorization (required)
      * @param  string $sort_by sort_by (optional)
      * @param  string $filter filter (optional)
@@ -423,8 +423,8 @@ class TaxInvoiceApi
      *
      * Get list all tax invocie documents.
      *
-     * @param  string $current_page (required)
-     * @param  string $page_size (required)
+     * @param  int $current_page Query current page document tax invoices. &lt;br&gt;Example Pattern: &lt;ex&gt;/tax-invoices?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/tax-invoices?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query document tax invoices list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /tax-invoices?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
      * @param  string $sort_by (optional)
      * @param  string $filter (optional)
@@ -515,8 +515,8 @@ class TaxInvoiceApi
      *
      * Get list all tax invocie documents.
      *
-     * @param  string $current_page (required)
-     * @param  string $page_size (required)
+     * @param  int $current_page Query current page document tax invoices. &lt;br&gt;Example Pattern: &lt;ex&gt;/tax-invoices?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/tax-invoices?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query document tax invoices list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /tax-invoices?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
      * @param  string $sort_by (optional)
      * @param  string $filter (optional)
@@ -539,8 +539,8 @@ class TaxInvoiceApi
      *
      * Get list all tax invocie documents.
      *
-     * @param  string $current_page (required)
-     * @param  string $page_size (required)
+     * @param  int $current_page Query current page document tax invoices. &lt;br&gt;Example Pattern: &lt;ex&gt;/tax-invoices?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/tax-invoices?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query document tax invoices list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /tax-invoices?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
      * @param  string $sort_by (optional)
      * @param  string $filter (optional)
@@ -590,8 +590,8 @@ class TaxInvoiceApi
     /**
      * Create request for operation 'taxInvoicesGet'
      *
-     * @param  string $current_page (required)
-     * @param  string $page_size (required)
+     * @param  int $current_page Query current page document tax invoices. &lt;br&gt;Example Pattern: &lt;ex&gt;/tax-invoices?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/tax-invoices?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query document tax invoices list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /tax-invoices?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
      * @param  string $sort_by (optional)
      * @param  string $filter (optional)

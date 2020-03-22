@@ -72,7 +72,6 @@ class ProductResponseData implements ModelInterface, ArrayAccess
         'buy_vat_type' => 'int',
         'inventory_published_on' => '\DateTime',
         'inventory_quantity' => 'float',
-        'inventory_price' => 'float',
         'average_buy_price' => 'float',
         'average_sell_price' => 'float',
         'remaining_stock' => 'float',
@@ -100,7 +99,6 @@ class ProductResponseData implements ModelInterface, ArrayAccess
         'buy_vat_type' => 'int64',
         'inventory_published_on' => 'date',
         'inventory_quantity' => 'decimal',
-        'inventory_price' => 'decimal',
         'average_buy_price' => 'decimal',
         'average_sell_price' => 'decimal',
         'remaining_stock' => 'decimal',
@@ -149,7 +147,6 @@ class ProductResponseData implements ModelInterface, ArrayAccess
         'buy_vat_type' => 'buyVatType',
         'inventory_published_on' => 'inventoryPublishedOn',
         'inventory_quantity' => 'inventoryQuantity',
-        'inventory_price' => 'inventoryPrice',
         'average_buy_price' => 'averageBuyPrice',
         'average_sell_price' => 'averageSellPrice',
         'remaining_stock' => 'remainingStock',
@@ -177,7 +174,6 @@ class ProductResponseData implements ModelInterface, ArrayAccess
         'buy_vat_type' => 'setBuyVatType',
         'inventory_published_on' => 'setInventoryPublishedOn',
         'inventory_quantity' => 'setInventoryQuantity',
-        'inventory_price' => 'setInventoryPrice',
         'average_buy_price' => 'setAverageBuyPrice',
         'average_sell_price' => 'setAverageSellPrice',
         'remaining_stock' => 'setRemainingStock',
@@ -205,7 +201,6 @@ class ProductResponseData implements ModelInterface, ArrayAccess
         'buy_vat_type' => 'getBuyVatType',
         'inventory_published_on' => 'getInventoryPublishedOn',
         'inventory_quantity' => 'getInventoryQuantity',
-        'inventory_price' => 'getInventoryPrice',
         'average_buy_price' => 'getAverageBuyPrice',
         'average_sell_price' => 'getAverageSellPrice',
         'remaining_stock' => 'getRemainingStock',
@@ -287,7 +282,6 @@ class ProductResponseData implements ModelInterface, ArrayAccess
         $this->container['buy_vat_type'] = isset($data['buy_vat_type']) ? $data['buy_vat_type'] : 3;
         $this->container['inventory_published_on'] = isset($data['inventory_published_on']) ? $data['inventory_published_on'] : null;
         $this->container['inventory_quantity'] = isset($data['inventory_quantity']) ? $data['inventory_quantity'] : null;
-        $this->container['inventory_price'] = isset($data['inventory_price']) ? $data['inventory_price'] : null;
         $this->container['average_buy_price'] = isset($data['average_buy_price']) ? $data['average_buy_price'] : null;
         $this->container['average_sell_price'] = isset($data['average_sell_price']) ? $data['average_sell_price'] : null;
         $this->container['remaining_stock'] = isset($data['remaining_stock']) ? $data['remaining_stock'] : null;
@@ -674,30 +668,6 @@ class ProductResponseData implements ModelInterface, ArrayAccess
     public function setInventoryQuantity($inventory_quantity)
     {
         $this->container['inventory_quantity'] = $inventory_quantity;
-
-        return $this;
-    }
-
-    /**
-     * Gets inventory_price
-     *
-     * @return float|null
-     */
-    public function getInventoryPrice()
-    {
-        return $this->container['inventory_price'];
-    }
-
-    /**
-     * Sets inventory_price
-     *
-     * @param float|null $inventory_price ราคาซื้อสินค้า
-     *
-     * @return $this
-     */
-    public function setInventoryPrice($inventory_price)
-    {
-        $this->container['inventory_price'] = $inventory_price;
 
         return $this;
     }

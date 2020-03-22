@@ -95,8 +95,8 @@ $apiInstance = new OpenAPI\Client\Api\TaxInvoiceApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$current_page = 'current_page_example'; // string | 
-$page_size = 'page_size_example'; // string | 
+$current_page = 56; // int | Query current page document tax invoices. <br>Example Pattern: <ex>/tax-invoices?currentPage=1 </ex><ex>/tax-invoices?currentPage=1&pageSize=20</ex>
+$page_size = 56; // int | Query document tax invoices list amount per page. <br>Example Pattern: <ex> /tax-invoices?pageSize=20 </ex>
 $authorization = 'Bearer accessToken'; // string | 
 $sort_by = 'sort_by_example'; // string | 
 $filter = 'filter_example'; // string | 
@@ -115,8 +115,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **current_page** | **string**|  |
- **page_size** | **string**|  |
+ **current_page** | **int**| Query current page document tax invoices. &lt;br&gt;Example Pattern: &lt;ex&gt;/tax-invoices?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/tax-invoices?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; |
+ **page_size** | **int**| Query document tax invoices list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /tax-invoices?pageSize&#x3D;20 &lt;/ex&gt; |
  **authorization** | **string**|  | [default to &#39;Bearer accessToken&#39;]
  **sort_by** | **string**|  | [optional]
  **filter** | **string**|  | [optional]

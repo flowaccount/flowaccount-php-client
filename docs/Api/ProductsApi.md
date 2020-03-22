@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## productsGet
 
-> \OpenAPI\Client\Model\ProductResponse productsGet($authorization)
+> \OpenAPI\Client\Model\ProductResponse productsGet($current_page, $page_size, $authorization)
 
 Get list all products.
 
@@ -30,10 +30,12 @@ $apiInstance = new OpenAPI\Client\Api\ProductsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$current_page = 56; // int | Query current page products item. <br>Example Pattern: <ex>/products?currentPage=1 </ex><ex>/products?currentPage=1&pageSize=20</ex>
+$page_size = 56; // int | Query products list amount per page. <br>Example Pattern: <ex> /products?pageSize=20 </ex>
 $authorization = 'Bearer accessToken'; // string | 
 
 try {
-    $result = $apiInstance->productsGet($authorization);
+    $result = $apiInstance->productsGet($current_page, $page_size, $authorization);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProductsApi->productsGet: ', $e->getMessage(), PHP_EOL;
@@ -46,6 +48,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **current_page** | **int**| Query current page products item. &lt;br&gt;Example Pattern: &lt;ex&gt;/products?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/products?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; |
+ **page_size** | **int**| Query products list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /products?pageSize&#x3D;20 &lt;/ex&gt; |
  **authorization** | **string**|  | [default to &#39;Bearer accessToken&#39;]
 
 ### Return type

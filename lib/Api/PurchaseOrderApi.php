@@ -402,15 +402,19 @@ class PurchaseOrderApi
      *
      * Get list all purchase order documents.
      *
+     * @param  int $current_page Query current page document purchase orders. &lt;br&gt;Example Pattern: &lt;ex&gt;/purchases-orders?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/purchases-orders?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query document purchase orders list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /purchases-orders?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization authorization (required)
+     * @param  string $sort_by sort_by (optional)
+     * @param  string $filter filter (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\InlineDocumentResponse
      */
-    public function purchasesOrdersGet($authorization)
+    public function purchasesOrdersGet($current_page, $page_size, $authorization, $sort_by = null, $filter = null)
     {
-        list($response) = $this->purchasesOrdersGetWithHttpInfo($authorization);
+        list($response) = $this->purchasesOrdersGetWithHttpInfo($current_page, $page_size, $authorization, $sort_by, $filter);
         return $response;
     }
 
@@ -419,15 +423,19 @@ class PurchaseOrderApi
      *
      * Get list all purchase order documents.
      *
+     * @param  int $current_page Query current page document purchase orders. &lt;br&gt;Example Pattern: &lt;ex&gt;/purchases-orders?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/purchases-orders?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query document purchase orders list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /purchases-orders?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
+     * @param  string $sort_by (optional)
+     * @param  string $filter (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\InlineDocumentResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function purchasesOrdersGetWithHttpInfo($authorization)
+    public function purchasesOrdersGetWithHttpInfo($current_page, $page_size, $authorization, $sort_by = null, $filter = null)
     {
-        $request = $this->purchasesOrdersGetRequest($authorization);
+        $request = $this->purchasesOrdersGetRequest($current_page, $page_size, $authorization, $sort_by, $filter);
 
         try {
             $options = $this->createHttpClientOption();
@@ -507,14 +515,18 @@ class PurchaseOrderApi
      *
      * Get list all purchase order documents.
      *
+     * @param  int $current_page Query current page document purchase orders. &lt;br&gt;Example Pattern: &lt;ex&gt;/purchases-orders?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/purchases-orders?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query document purchase orders list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /purchases-orders?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
+     * @param  string $sort_by (optional)
+     * @param  string $filter (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function purchasesOrdersGetAsync($authorization)
+    public function purchasesOrdersGetAsync($current_page, $page_size, $authorization, $sort_by = null, $filter = null)
     {
-        return $this->purchasesOrdersGetAsyncWithHttpInfo($authorization)
+        return $this->purchasesOrdersGetAsyncWithHttpInfo($current_page, $page_size, $authorization, $sort_by, $filter)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -527,15 +539,19 @@ class PurchaseOrderApi
      *
      * Get list all purchase order documents.
      *
+     * @param  int $current_page Query current page document purchase orders. &lt;br&gt;Example Pattern: &lt;ex&gt;/purchases-orders?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/purchases-orders?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query document purchase orders list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /purchases-orders?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
+     * @param  string $sort_by (optional)
+     * @param  string $filter (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function purchasesOrdersGetAsyncWithHttpInfo($authorization)
+    public function purchasesOrdersGetAsyncWithHttpInfo($current_page, $page_size, $authorization, $sort_by = null, $filter = null)
     {
         $returnType = '\OpenAPI\Client\Model\InlineDocumentResponse';
-        $request = $this->purchasesOrdersGetRequest($authorization);
+        $request = $this->purchasesOrdersGetRequest($current_page, $page_size, $authorization, $sort_by, $filter);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -574,13 +590,29 @@ class PurchaseOrderApi
     /**
      * Create request for operation 'purchasesOrdersGet'
      *
+     * @param  int $current_page Query current page document purchase orders. &lt;br&gt;Example Pattern: &lt;ex&gt;/purchases-orders?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/purchases-orders?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query document purchase orders list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /purchases-orders?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
+     * @param  string $sort_by (optional)
+     * @param  string $filter (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function purchasesOrdersGetRequest($authorization)
+    protected function purchasesOrdersGetRequest($current_page, $page_size, $authorization, $sort_by = null, $filter = null)
     {
+        // verify the required parameter 'current_page' is set
+        if ($current_page === null || (is_array($current_page) && count($current_page) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $current_page when calling purchasesOrdersGet'
+            );
+        }
+        // verify the required parameter 'page_size' is set
+        if ($page_size === null || (is_array($page_size) && count($page_size) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $page_size when calling purchasesOrdersGet'
+            );
+        }
         // verify the required parameter 'authorization' is set
         if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
             throw new \InvalidArgumentException(
@@ -595,6 +627,22 @@ class PurchaseOrderApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($current_page !== null) {
+            $queryParams['currentPage'] = ObjectSerializer::toQueryValue($current_page);
+        }
+        // query params
+        if ($page_size !== null) {
+            $queryParams['pageSize'] = ObjectSerializer::toQueryValue($page_size);
+        }
+        // query params
+        if ($sort_by !== null) {
+            $queryParams['sortBy'] = ObjectSerializer::toQueryValue($sort_by);
+        }
+        // query params
+        if ($filter !== null) {
+            $queryParams['filter'] = ObjectSerializer::toQueryValue($filter);
+        }
         // header params
         if ($authorization !== null) {
             $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);

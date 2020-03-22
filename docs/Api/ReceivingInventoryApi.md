@@ -76,7 +76,7 @@ No authorization required
 
 ## purchasesGet
 
-> \OpenAPI\Client\Model\InlineDocumentResponse purchasesGet($authorization)
+> \OpenAPI\Client\Model\InlineDocumentResponse purchasesGet($current_page, $page_size, $authorization, $sort_by, $filter)
 
 Get list all receiving inventory documents.
 
@@ -94,10 +94,14 @@ $apiInstance = new OpenAPI\Client\Api\ReceivingInventoryApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$current_page = 56; // int | Query current page document purchases. <br>Example Pattern: <ex>/purchases?currentPage=1 </ex><ex>/purchases?currentPage=1&pageSize=20</ex>
+$page_size = 56; // int | Query document purchases list amount per page. <br>Example Pattern: <ex> /purchases?pageSize=20 </ex>
 $authorization = 'Bearer accessToken'; // string | 
+$sort_by = 'sort_by_example'; // string | 
+$filter = 'filter_example'; // string | 
 
 try {
-    $result = $apiInstance->purchasesGet($authorization);
+    $result = $apiInstance->purchasesGet($current_page, $page_size, $authorization, $sort_by, $filter);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReceivingInventoryApi->purchasesGet: ', $e->getMessage(), PHP_EOL;
@@ -110,7 +114,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **current_page** | **int**| Query current page document purchases. &lt;br&gt;Example Pattern: &lt;ex&gt;/purchases?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/purchases?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; |
+ **page_size** | **int**| Query document purchases list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /purchases?pageSize&#x3D;20 &lt;/ex&gt; |
  **authorization** | **string**|  | [default to &#39;Bearer accessToken&#39;]
+ **sort_by** | **string**|  | [optional]
+ **filter** | **string**|  | [optional]
 
 ### Return type
 

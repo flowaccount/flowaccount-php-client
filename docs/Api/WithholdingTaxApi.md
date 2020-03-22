@@ -75,7 +75,7 @@ No authorization required
 
 ## withholdingTaxesGet
 
-> \OpenAPI\Client\Model\WithholidingTaxDocumentResponse withholdingTaxesGet($authorization)
+> \OpenAPI\Client\Model\WithholidingTaxDocumentResponse withholdingTaxesGet($current_page, $page_size, $authorization, $sort_by, $filter)
 
 Get list all withholding tax documents.
 
@@ -93,10 +93,14 @@ $apiInstance = new OpenAPI\Client\Api\WithholdingTaxApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$current_page = 56; // int | Query current page document withholding tax. <br>Example Pattern: <ex>/withholding-taxes?currentPage=1 </ex><ex>/withholding-taxes?currentPage=1&pageSize=20</ex>
+$page_size = 56; // int | Query document withholding tax list amount per page. <br>Example Pattern: <ex> /withholding-taxes?pageSize=20 </ex>
 $authorization = 'Bearer accessToken'; // string | 
+$sort_by = 'sort_by_example'; // string | 
+$filter = 'filter_example'; // string | 
 
 try {
-    $result = $apiInstance->withholdingTaxesGet($authorization);
+    $result = $apiInstance->withholdingTaxesGet($current_page, $page_size, $authorization, $sort_by, $filter);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WithholdingTaxApi->withholdingTaxesGet: ', $e->getMessage(), PHP_EOL;
@@ -109,7 +113,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **current_page** | **int**| Query current page document withholding tax. &lt;br&gt;Example Pattern: &lt;ex&gt;/withholding-taxes?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/withholding-taxes?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; |
+ **page_size** | **int**| Query document withholding tax list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /withholding-taxes?pageSize&#x3D;20 &lt;/ex&gt; |
  **authorization** | **string**|  | [default to &#39;Bearer accessToken&#39;]
+ **sort_by** | **string**|  | [optional]
+ **filter** | **string**|  | [optional]
 
 ### Return type
 

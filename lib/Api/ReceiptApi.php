@@ -402,8 +402,8 @@ class ReceiptApi
      *
      * Get list all receipt documents
      *
-     * @param  string $current_page current_page (required)
-     * @param  string $page_size page_size (required)
+     * @param  int $current_page Query current page document receipts. &lt;br&gt;Example Pattern: &lt;ex&gt;/receipts?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/receipts?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query document receipts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /receipts?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization authorization (required)
      * @param  string $sort_by sort_by (optional)
      * @param  string $filter filter (optional)
@@ -423,8 +423,8 @@ class ReceiptApi
      *
      * Get list all receipt documents
      *
-     * @param  string $current_page (required)
-     * @param  string $page_size (required)
+     * @param  int $current_page Query current page document receipts. &lt;br&gt;Example Pattern: &lt;ex&gt;/receipts?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/receipts?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query document receipts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /receipts?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
      * @param  string $sort_by (optional)
      * @param  string $filter (optional)
@@ -515,8 +515,8 @@ class ReceiptApi
      *
      * Get list all receipt documents
      *
-     * @param  string $current_page (required)
-     * @param  string $page_size (required)
+     * @param  int $current_page Query current page document receipts. &lt;br&gt;Example Pattern: &lt;ex&gt;/receipts?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/receipts?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query document receipts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /receipts?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
      * @param  string $sort_by (optional)
      * @param  string $filter (optional)
@@ -539,8 +539,8 @@ class ReceiptApi
      *
      * Get list all receipt documents
      *
-     * @param  string $current_page (required)
-     * @param  string $page_size (required)
+     * @param  int $current_page Query current page document receipts. &lt;br&gt;Example Pattern: &lt;ex&gt;/receipts?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/receipts?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query document receipts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /receipts?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
      * @param  string $sort_by (optional)
      * @param  string $filter (optional)
@@ -590,8 +590,8 @@ class ReceiptApi
     /**
      * Create request for operation 'receiptsGet'
      *
-     * @param  string $current_page (required)
-     * @param  string $page_size (required)
+     * @param  int $current_page Query current page document receipts. &lt;br&gt;Example Pattern: &lt;ex&gt;/receipts?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/receipts?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
+     * @param  int $page_size Query document receipts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /receipts?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
      * @param  string $sort_by (optional)
      * @param  string $filter (optional)

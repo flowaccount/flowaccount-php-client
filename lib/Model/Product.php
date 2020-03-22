@@ -331,7 +331,7 @@ class Product implements ModelInterface, ArrayAccess
     /**
      * Sets code
      *
-     * @param string|null $code รหัสสินค้า <br> <ex>Example: P001</ex>
+     * @param string|null $code รหัสสินค้า / SKU <br> <ex>Example: P001</ex>
      *
      * @return $this
      */

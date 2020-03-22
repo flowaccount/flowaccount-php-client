@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## contactsGet
 
-> \OpenAPI\Client\Model\ContactResponse contactsGet($authorization)
+> \OpenAPI\Client\Model\ContactResponse contactsGet($current_page, $page_size, $authorization)
 
 Get list all contacts.
 
@@ -30,10 +30,12 @@ $apiInstance = new OpenAPI\Client\Api\ContactsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$current_page = 56; // int | Query current page contacts. <br>Example Pattern: <ex>/contacts?currentPage=1 </ex><ex>/contacts?currentPage=1&pageSize=20</ex>
+$page_size = 56; // int | Query contacts list amount per page. <br>Example Pattern: <ex> /contacts?pageSize=20 </ex>
 $authorization = 'Bearer accessToken'; // string | 
 
 try {
-    $result = $apiInstance->contactsGet($authorization);
+    $result = $apiInstance->contactsGet($current_page, $page_size, $authorization);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContactsApi->contactsGet: ', $e->getMessage(), PHP_EOL;
@@ -46,6 +48,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **current_page** | **int**| Query current page contacts. &lt;br&gt;Example Pattern: &lt;ex&gt;/contacts?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/contacts?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; |
+ **page_size** | **int**| Query contacts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /contacts?pageSize&#x3D;20 &lt;/ex&gt; |
  **authorization** | **string**|  | [default to &#39;Bearer accessToken&#39;]
 
 ### Return type
