@@ -123,14 +123,16 @@ class ContactsApi
      * @param  int $current_page Query current page contacts. &lt;br&gt;Example Pattern: &lt;ex&gt;/contacts?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/contacts?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
      * @param  int $page_size Query contacts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /contacts?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization authorization (required)
+     * @param  string $sort_by Query contacts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /contacts?sortBy&#x3D;[{&#39;name&#39;:&#39;contactPerson&#39;,&#39;sortOrder&#39;:&#39;desc&#39;}]&lt;/ex&gt; (optional)
+     * @param  string $filter Query contacts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /contacts?filter&#x3D;[{&#39;columnName&#39;:&#39;contactType&#39;,&#39;columnValue&#39;:&#39;3&#39;,&#39;columnPredicateOperator&#39;:&#39;And&#39;}]&lt;/ex&gt; (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\ContactResponse
      */
-    public function contactsGet($current_page, $page_size, $authorization)
+    public function contactsGet($current_page, $page_size, $authorization, $sort_by = null, $filter = null)
     {
-        list($response) = $this->contactsGetWithHttpInfo($current_page, $page_size, $authorization);
+        list($response) = $this->contactsGetWithHttpInfo($current_page, $page_size, $authorization, $sort_by, $filter);
         return $response;
     }
 
@@ -142,14 +144,16 @@ class ContactsApi
      * @param  int $current_page Query current page contacts. &lt;br&gt;Example Pattern: &lt;ex&gt;/contacts?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/contacts?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
      * @param  int $page_size Query contacts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /contacts?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
+     * @param  string $sort_by Query contacts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /contacts?sortBy&#x3D;[{&#39;name&#39;:&#39;contactPerson&#39;,&#39;sortOrder&#39;:&#39;desc&#39;}]&lt;/ex&gt; (optional)
+     * @param  string $filter Query contacts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /contacts?filter&#x3D;[{&#39;columnName&#39;:&#39;contactType&#39;,&#39;columnValue&#39;:&#39;3&#39;,&#39;columnPredicateOperator&#39;:&#39;And&#39;}]&lt;/ex&gt; (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\ContactResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function contactsGetWithHttpInfo($current_page, $page_size, $authorization)
+    public function contactsGetWithHttpInfo($current_page, $page_size, $authorization, $sort_by = null, $filter = null)
     {
-        $request = $this->contactsGetRequest($current_page, $page_size, $authorization);
+        $request = $this->contactsGetRequest($current_page, $page_size, $authorization, $sort_by, $filter);
 
         try {
             $options = $this->createHttpClientOption();
@@ -232,13 +236,15 @@ class ContactsApi
      * @param  int $current_page Query current page contacts. &lt;br&gt;Example Pattern: &lt;ex&gt;/contacts?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/contacts?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
      * @param  int $page_size Query contacts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /contacts?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
+     * @param  string $sort_by Query contacts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /contacts?sortBy&#x3D;[{&#39;name&#39;:&#39;contactPerson&#39;,&#39;sortOrder&#39;:&#39;desc&#39;}]&lt;/ex&gt; (optional)
+     * @param  string $filter Query contacts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /contacts?filter&#x3D;[{&#39;columnName&#39;:&#39;contactType&#39;,&#39;columnValue&#39;:&#39;3&#39;,&#39;columnPredicateOperator&#39;:&#39;And&#39;}]&lt;/ex&gt; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function contactsGetAsync($current_page, $page_size, $authorization)
+    public function contactsGetAsync($current_page, $page_size, $authorization, $sort_by = null, $filter = null)
     {
-        return $this->contactsGetAsyncWithHttpInfo($current_page, $page_size, $authorization)
+        return $this->contactsGetAsyncWithHttpInfo($current_page, $page_size, $authorization, $sort_by, $filter)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -254,14 +260,16 @@ class ContactsApi
      * @param  int $current_page Query current page contacts. &lt;br&gt;Example Pattern: &lt;ex&gt;/contacts?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/contacts?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
      * @param  int $page_size Query contacts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /contacts?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
+     * @param  string $sort_by Query contacts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /contacts?sortBy&#x3D;[{&#39;name&#39;:&#39;contactPerson&#39;,&#39;sortOrder&#39;:&#39;desc&#39;}]&lt;/ex&gt; (optional)
+     * @param  string $filter Query contacts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /contacts?filter&#x3D;[{&#39;columnName&#39;:&#39;contactType&#39;,&#39;columnValue&#39;:&#39;3&#39;,&#39;columnPredicateOperator&#39;:&#39;And&#39;}]&lt;/ex&gt; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function contactsGetAsyncWithHttpInfo($current_page, $page_size, $authorization)
+    public function contactsGetAsyncWithHttpInfo($current_page, $page_size, $authorization, $sort_by = null, $filter = null)
     {
         $returnType = '\OpenAPI\Client\Model\ContactResponse';
-        $request = $this->contactsGetRequest($current_page, $page_size, $authorization);
+        $request = $this->contactsGetRequest($current_page, $page_size, $authorization, $sort_by, $filter);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -303,11 +311,13 @@ class ContactsApi
      * @param  int $current_page Query current page contacts. &lt;br&gt;Example Pattern: &lt;ex&gt;/contacts?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/contacts?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
      * @param  int $page_size Query contacts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /contacts?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
+     * @param  string $sort_by Query contacts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /contacts?sortBy&#x3D;[{&#39;name&#39;:&#39;contactPerson&#39;,&#39;sortOrder&#39;:&#39;desc&#39;}]&lt;/ex&gt; (optional)
+     * @param  string $filter Query contacts list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /contacts?filter&#x3D;[{&#39;columnName&#39;:&#39;contactType&#39;,&#39;columnValue&#39;:&#39;3&#39;,&#39;columnPredicateOperator&#39;:&#39;And&#39;}]&lt;/ex&gt; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function contactsGetRequest($current_page, $page_size, $authorization)
+    protected function contactsGetRequest($current_page, $page_size, $authorization, $sort_by = null, $filter = null)
     {
         // verify the required parameter 'current_page' is set
         if ($current_page === null || (is_array($current_page) && count($current_page) === 0)) {
@@ -342,6 +352,14 @@ class ContactsApi
         // query params
         if ($page_size !== null) {
             $queryParams['pageSize'] = ObjectSerializer::toQueryValue($page_size);
+        }
+        // query params
+        if ($sort_by !== null) {
+            $queryParams['sortBy'] = ObjectSerializer::toQueryValue($sort_by);
+        }
+        // query params
+        if ($filter !== null) {
+            $queryParams['filter'] = ObjectSerializer::toQueryValue($filter);
         }
         // header params
         if ($authorization !== null) {

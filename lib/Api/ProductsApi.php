@@ -123,14 +123,16 @@ class ProductsApi
      * @param  int $current_page Query current page products item. &lt;br&gt;Example Pattern: &lt;ex&gt;/products?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/products?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
      * @param  int $page_size Query products list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /products?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization authorization (required)
+     * @param  string $sort_by Query products list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /products?sortBy&#x3D;[{&#39;name&#39;:&#39;productcode&#39;,&#39;sortOrder&#39;:&#39;asc&#39;}]&lt;/ex&gt; (optional)
+     * @param  string $filter Query products list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /products?filter&#x3D;[{&#39;columnName&#39;:&#39;categoryId&#39;,&#39;columnValue&#39;:&#39;517727&#39;,&#39;columnPredicateOperator&#39;:&#39;And&#39;}]&lt;/ex&gt; (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\ProductResponse
      */
-    public function productsGet($current_page, $page_size, $authorization)
+    public function productsGet($current_page, $page_size, $authorization, $sort_by = null, $filter = null)
     {
-        list($response) = $this->productsGetWithHttpInfo($current_page, $page_size, $authorization);
+        list($response) = $this->productsGetWithHttpInfo($current_page, $page_size, $authorization, $sort_by, $filter);
         return $response;
     }
 
@@ -142,14 +144,16 @@ class ProductsApi
      * @param  int $current_page Query current page products item. &lt;br&gt;Example Pattern: &lt;ex&gt;/products?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/products?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
      * @param  int $page_size Query products list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /products?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
+     * @param  string $sort_by Query products list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /products?sortBy&#x3D;[{&#39;name&#39;:&#39;productcode&#39;,&#39;sortOrder&#39;:&#39;asc&#39;}]&lt;/ex&gt; (optional)
+     * @param  string $filter Query products list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /products?filter&#x3D;[{&#39;columnName&#39;:&#39;categoryId&#39;,&#39;columnValue&#39;:&#39;517727&#39;,&#39;columnPredicateOperator&#39;:&#39;And&#39;}]&lt;/ex&gt; (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\ProductResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function productsGetWithHttpInfo($current_page, $page_size, $authorization)
+    public function productsGetWithHttpInfo($current_page, $page_size, $authorization, $sort_by = null, $filter = null)
     {
-        $request = $this->productsGetRequest($current_page, $page_size, $authorization);
+        $request = $this->productsGetRequest($current_page, $page_size, $authorization, $sort_by, $filter);
 
         try {
             $options = $this->createHttpClientOption();
@@ -232,13 +236,15 @@ class ProductsApi
      * @param  int $current_page Query current page products item. &lt;br&gt;Example Pattern: &lt;ex&gt;/products?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/products?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
      * @param  int $page_size Query products list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /products?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
+     * @param  string $sort_by Query products list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /products?sortBy&#x3D;[{&#39;name&#39;:&#39;productcode&#39;,&#39;sortOrder&#39;:&#39;asc&#39;}]&lt;/ex&gt; (optional)
+     * @param  string $filter Query products list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /products?filter&#x3D;[{&#39;columnName&#39;:&#39;categoryId&#39;,&#39;columnValue&#39;:&#39;517727&#39;,&#39;columnPredicateOperator&#39;:&#39;And&#39;}]&lt;/ex&gt; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function productsGetAsync($current_page, $page_size, $authorization)
+    public function productsGetAsync($current_page, $page_size, $authorization, $sort_by = null, $filter = null)
     {
-        return $this->productsGetAsyncWithHttpInfo($current_page, $page_size, $authorization)
+        return $this->productsGetAsyncWithHttpInfo($current_page, $page_size, $authorization, $sort_by, $filter)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -254,14 +260,16 @@ class ProductsApi
      * @param  int $current_page Query current page products item. &lt;br&gt;Example Pattern: &lt;ex&gt;/products?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/products?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
      * @param  int $page_size Query products list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /products?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
+     * @param  string $sort_by Query products list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /products?sortBy&#x3D;[{&#39;name&#39;:&#39;productcode&#39;,&#39;sortOrder&#39;:&#39;asc&#39;}]&lt;/ex&gt; (optional)
+     * @param  string $filter Query products list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /products?filter&#x3D;[{&#39;columnName&#39;:&#39;categoryId&#39;,&#39;columnValue&#39;:&#39;517727&#39;,&#39;columnPredicateOperator&#39;:&#39;And&#39;}]&lt;/ex&gt; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function productsGetAsyncWithHttpInfo($current_page, $page_size, $authorization)
+    public function productsGetAsyncWithHttpInfo($current_page, $page_size, $authorization, $sort_by = null, $filter = null)
     {
         $returnType = '\OpenAPI\Client\Model\ProductResponse';
-        $request = $this->productsGetRequest($current_page, $page_size, $authorization);
+        $request = $this->productsGetRequest($current_page, $page_size, $authorization, $sort_by, $filter);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -303,11 +311,13 @@ class ProductsApi
      * @param  int $current_page Query current page products item. &lt;br&gt;Example Pattern: &lt;ex&gt;/products?currentPage&#x3D;1 &lt;/ex&gt;&lt;ex&gt;/products?currentPage&#x3D;1&amp;pageSize&#x3D;20&lt;/ex&gt; (required)
      * @param  int $page_size Query products list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /products?pageSize&#x3D;20 &lt;/ex&gt; (required)
      * @param  string $authorization (required)
+     * @param  string $sort_by Query products list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /products?sortBy&#x3D;[{&#39;name&#39;:&#39;productcode&#39;,&#39;sortOrder&#39;:&#39;asc&#39;}]&lt;/ex&gt; (optional)
+     * @param  string $filter Query products list amount per page. &lt;br&gt;Example Pattern: &lt;ex&gt; /products?filter&#x3D;[{&#39;columnName&#39;:&#39;categoryId&#39;,&#39;columnValue&#39;:&#39;517727&#39;,&#39;columnPredicateOperator&#39;:&#39;And&#39;}]&lt;/ex&gt; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function productsGetRequest($current_page, $page_size, $authorization)
+    protected function productsGetRequest($current_page, $page_size, $authorization, $sort_by = null, $filter = null)
     {
         // verify the required parameter 'current_page' is set
         if ($current_page === null || (is_array($current_page) && count($current_page) === 0)) {
@@ -342,6 +352,14 @@ class ProductsApi
         // query params
         if ($page_size !== null) {
             $queryParams['pageSize'] = ObjectSerializer::toQueryValue($page_size);
+        }
+        // query params
+        if ($sort_by !== null) {
+            $queryParams['sortBy'] = ObjectSerializer::toQueryValue($sort_by);
+        }
+        // query params
+        if ($filter !== null) {
+            $queryParams['filter'] = ObjectSerializer::toQueryValue($filter);
         }
         // header params
         if ($authorization !== null) {

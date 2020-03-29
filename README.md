@@ -260,5 +260,5 @@ All endpoints do not require authorization.
 
 ## Author
 
-developer@flowaccount.com
-
+Email: developer@flowaccount.com
+Tel: 02-026-8989

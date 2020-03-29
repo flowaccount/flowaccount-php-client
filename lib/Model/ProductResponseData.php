@@ -65,6 +65,7 @@ class ProductResponseData implements ModelInterface, ArrayAccess
         'sell_price' => 'float',
         'sell_vat_type' => 'int',
         'unit_name' => 'string',
+        'category_id' => 'int',
         'category_name' => 'string',
         'barcode' => 'string',
         'buy_description' => 'string',
@@ -92,6 +93,7 @@ class ProductResponseData implements ModelInterface, ArrayAccess
         'sell_price' => 'decimal',
         'sell_vat_type' => 'int64',
         'unit_name' => null,
+        'category_id' => 'int64',
         'category_name' => null,
         'barcode' => null,
         'buy_description' => null,
@@ -140,6 +142,7 @@ class ProductResponseData implements ModelInterface, ArrayAccess
         'sell_price' => 'sellPrice',
         'sell_vat_type' => 'sellVatType',
         'unit_name' => 'unitName',
+        'category_id' => 'categoryId',
         'category_name' => 'categoryName',
         'barcode' => 'barcode',
         'buy_description' => 'buyDescription',
@@ -167,6 +170,7 @@ class ProductResponseData implements ModelInterface, ArrayAccess
         'sell_price' => 'setSellPrice',
         'sell_vat_type' => 'setSellVatType',
         'unit_name' => 'setUnitName',
+        'category_id' => 'setCategoryId',
         'category_name' => 'setCategoryName',
         'barcode' => 'setBarcode',
         'buy_description' => 'setBuyDescription',
@@ -194,6 +198,7 @@ class ProductResponseData implements ModelInterface, ArrayAccess
         'sell_price' => 'getSellPrice',
         'sell_vat_type' => 'getSellVatType',
         'unit_name' => 'getUnitName',
+        'category_id' => 'getCategoryId',
         'category_name' => 'getCategoryName',
         'barcode' => 'getBarcode',
         'buy_description' => 'getBuyDescription',
@@ -275,6 +280,7 @@ class ProductResponseData implements ModelInterface, ArrayAccess
         $this->container['sell_price'] = isset($data['sell_price']) ? $data['sell_price'] : null;
         $this->container['sell_vat_type'] = isset($data['sell_vat_type']) ? $data['sell_vat_type'] : 3;
         $this->container['unit_name'] = isset($data['unit_name']) ? $data['unit_name'] : null;
+        $this->container['category_id'] = isset($data['category_id']) ? $data['category_id'] : null;
         $this->container['category_name'] = isset($data['category_name']) ? $data['category_name'] : null;
         $this->container['barcode'] = isset($data['barcode']) ? $data['barcode'] : null;
         $this->container['buy_description'] = isset($data['buy_description']) ? $data['buy_description'] : null;
@@ -500,6 +506,30 @@ class ProductResponseData implements ModelInterface, ArrayAccess
     public function setUnitName($unit_name)
     {
         $this->container['unit_name'] = $unit_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets category_id
+     *
+     * @return int|null
+     */
+    public function getCategoryId()
+    {
+        return $this->container['category_id'];
+    }
+
+    /**
+     * Sets category_id
+     *
+     * @param int|null $category_id id หมวดสินค้า
+     *
+     * @return $this
+     */
+    public function setCategoryId($category_id)
+    {
+        $this->container['category_id'] = $category_id;
 
         return $this;
     }
